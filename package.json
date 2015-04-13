@@ -5,6 +5,10 @@
   "scripts": {
     "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/burningneuron/savageworlds.git"
+  },
   "keywords": [
     "rpg",
     "savage worlds",

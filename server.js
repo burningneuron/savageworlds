@@ -55,6 +55,9 @@ app.use(passport.initialize());
 // Create our Express router
 var router = express.Router();
 
+// serve static files
+app.use(express.static('ui'));
+
 // Create endpoint handlers for /characters
 router.route('/api/characters')
 	.post(authController.isAuthenticated, characterController.postCharacters)

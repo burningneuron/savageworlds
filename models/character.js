@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var CharacterSchema = new mongoose.Schema({
   userId: String,
   name: String,
+  setting: String,
   race: String,
   rank: String,
   xps: Number,

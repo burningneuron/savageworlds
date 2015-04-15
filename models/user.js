@@ -4,15 +4,23 @@ var bcrypt = require('bcrypt-nodejs');
 
 // Define our user schema
 var UserSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    unique: true,
-    required: true
+  local: {
+    email: String,
+    password: String
   },
-  password: {
-    type: String,
-    required: true
+  facebook         : {
+      id           : String,
+      token        : String,
+      email        : String,
+      name         : String
+  },
+  twitter          : {
+      id           : String,
+      token        : String,
+      displayName  : String,
+      username     : String
   }
+
 });
 
 // Execute before each user.save() call

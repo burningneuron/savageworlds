@@ -19,10 +19,10 @@ var clientController = require('./controllers/client');
 mongoose.connect('mongodb://localhost:27017/savageworlds');
 var db = mongoose.connection;
 db.on('error', function() {
-	logger.error('connection error');
+  logger.error('connection error');
 });
 db.once('open', function(callback) {
-	logger.info('connection open');
+  logger.info('connection open');
 });
 
 // Create our Express application
@@ -34,23 +34,26 @@ app.set('port', (process.env.PORT || 5000));
 
 // Use the body-parser package in our application
 app.use(bodyParser.urlencoded({
-	extended: true
+  extended: true
 }));
 
 app.use(expressWinston.logger({
-	transports: _.values(logger.transports),
-	winstonInstance: logger
+  transports: _.values(logger.transports),
+  winstonInstance: logger
 }));
 
 // Use express session support since OAuth2orize requires it
 app.use(session({
-	secret: 'Super Secret Session Key',
-	saveUninitialized: true,
-	resave: true
+  secret: 'Super Secret Session Key',
+  saveUninitialized: true,
+  resave: true
 }));
 
 // Use the passport package in our application
+var baseUrl = config.get('host') + ":" + app.get('port');
+authController.configure(passport, baseUrl);
 app.use(passport.initialize());
+app.use(passport.session())
 
 // Create our Express router
 var router = express.Router();
@@ -60,38 +63,52 @@ app.use(express.static('ui'));
 
 // Create endpoint handlers for /characters
 router.route('/api/characters')
-	.post(authController.isAuthenticated, characterController.postCharacters)
-	.get(authController.isAuthenticated, characterController.getCharacters);
+  .post(authController.isAuthenticated, characterController.postCharacters)
+  .get(authController.isAuthenticated, characterController.getCharacters);
 
 // Create endpoint handlers for /characters/:character_id
 router.route('/api/characters/:character_id')
-	.get(authController.isAuthenticated, characterController.getCharacter)
-	.put(authController.isAuthenticated, characterController.putCharacter)
-	.delete(authController.isAuthenticated, characterController.deleteCharacter);
+  .get(authController.isAuthenticated, characterController.getCharacter)
+  .put(authController.isAuthenticated, characterController.putCharacter)
+  .delete(authController.isAuthenticated, characterController.deleteCharacter);
 
 // Create endpoint handlers for /users
 router.route('/api/users')
-	.post(userController.postUsers)
-	.get(authController.isAuthenticated, userController.getUsers);
+  .post(userController.postUsers)
+  .get(authController.isAuthenticated, userController.getUsers);
+
+// facebook -------------------------------
+
+// send to facebook to do the authentication
+app.get('/api/auth/facebook', passport.authenticate('facebook', {
+  scope: 'email'
+}));
+
+// handle the callback after facebook has authenticated the user
+app.get('/api/auth/facebook/callback',
+  passport.authenticate('facebook', {
+    successRedirect: '/profile',
+    failureRedirect: '/'
+  }));
 
 // Create endpoint handlers for /clients
 router.route('/api/clients')
-	.post(authController.isAuthenticated, clientController.postClients)
-	.get(authController.isAuthenticated, clientController.getClients);
+  .post(authController.isAuthenticated, clientController.postClients)
+  .get(authController.isAuthenticated, clientController.getClients);
 
 // Create endpoint handlers for oauth2 authorize
 router.route('/api/oauth2/authorize')
-	.get(authController.isAuthenticated, oauth2Controller.authorization)
-	.post(authController.isAuthenticated, oauth2Controller.decision);
+  .get(authController.isAuthenticated, oauth2Controller.authorization)
+  .post(authController.isAuthenticated, oauth2Controller.decision);
 
 // Create endpoint handlers for oauth2 token
 router.route('/api/oauth2/token')
-	.post(authController.isClientAuthenticated, oauth2Controller.token);
+  .post(authController.isClientAuthenticated, oauth2Controller.token);
 
 // Register all our routes
 app.use(router);
 
 // Start the server
 app.listen(app.get('port'), function() {
-	console.log("Savage Worlds running at localhost:" + app.get('port'));
+  console.log("Savage Worlds running at " + config.get('host') + ":" + app.get('port'));
 });

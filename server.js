@@ -14,6 +14,7 @@ var userController = require('./controllers/user');
 var authController = require('./controllers/auth');
 var oauth2Controller = require('./controllers/oauth2');
 var clientController = require('./controllers/client');
+var FacebookStrategy = require('passport-facebook').Strategy;
 
 var env = require('./config/env.js');
 

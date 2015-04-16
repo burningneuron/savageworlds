@@ -9,6 +9,7 @@ var User = require('../models/user');
 var Client = require('../models/client');
 var Token = require('../models/token');
 var env = require('../config/env.js');
+var logger = require('../common/logger');
 
 // =========================================================================
 // passport session setup ==================================================
@@ -159,6 +160,10 @@ passport.use(new FacebookStrategy({
 
   },
   function(req, token, refreshToken, profile, done) {
+    logger.info('req: ' + req);
+    logger.info('token: ' + token);
+    logger.info('refreshToken: ' + refreshToken);
+    logger.info('profile: ' + profile);
 
     // asynchronous
     process.nextTick(function() {

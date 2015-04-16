@@ -50,8 +50,6 @@ app.use(session({
 }));
 
 // Use the passport package in our application
-var baseUrl = config.get('host') + ":" + app.get('port');
-authController.configure(baseUrl);
 app.use(passport.initialize());
 app.use(passport.session());
 

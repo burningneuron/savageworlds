@@ -1,82 +1,27 @@
-# savageworlds
-A character sheet app for Savage Worlds
+# Easy Node Authentication
 
-This project is intended to be nothing more than a place to create, store, and edit Savage Worlds characters.
+Code for the entire scotch.io tutorial series: Complete Guide to Node Authentication
 
-There are currently no plans to make this a rules-checked character sheet, this is just a way to manually create a good-looking character sheet.
+We will be using Passport to authenticate users locally, with Facebook, Twitter, and Google.
 
-Character objects (presently) look like this:
-```javascript
-{
-  userId: String,
-  name: String,
-  race: String,
-  rank: String,
-  xps: Number,
-  money: String,
-  baseStats: {
-    agility: String,
-    smarts: String,
-    spirit: String,
-    strength: String,
-    vigor: String,
-    charisma: String,
-    charismaModifier: String,
-    pace: String,
-    sprintDie: String,
-    parry: String,
-    parryModifier: String,
-    toughness: String,
-    armor: String,
-  },
-  otherStats: [{
-    name: String,
-    value: String
-  }],
-  armor: {
-    head: String,
-    torso: String,
-    arms: String,
-    legs: String
-  },
-  encumbrance: {
-    carried: Number,
-    limit: Number,
-    penalty: Number
-  },
-  skills: [{
-    name: String,
-    value: String
-  }],
-  edges: [{
-    name: String,
-    description: String
-  }],
-  hindrances: [{
-    name: String,
-    description: String
-  }],
-  powers: [{
-    name: String,
-    trappings: String,
-    cost: String,
-    range: String,
-    damage: String,
-    duration: String
-  }],
-  weapons: [{
-    name: String,
-    range: String,
-    rof: String,
-    damage: String,
-    ap: String,
-    weight: Number,
-    notes: String
-  }],
-  equipment: [{
-    name: String,
-    description: String,
-    weight: Number
-  }]
-}
-```
+#### Upgraded To Express 4.0
+This tutorial has been upgraded to use ExpressJS 4.0. See [the commit](https://github.com/scotch-io/easy-node-authentication/commit/020dea057d5a0664caaeb041b18978237528f9a3) for specific changes.
+
+## Instructions
+
+If you would like to download the code and try it for yourself:
+
+1. Clone the repo: `git clone git@github.com:scotch-io/easy-node-authentication`
+2. Install packages: `npm install`
+3. Change out the database configuration in config/database.js
+4. Change out auth keys in config/auth.js
+5. Launch: `node server.js`
+6. Visit in your browser at: `http://localhost:8080`
+
+## The Tutorials
+
+- [Getting Started and Local Authentication](http://scotch.io/tutorials/javascript/easy-node-authentication-setup-and-local)
+- [Facebook](http://scotch.io/tutorials/javascript/easy-node-authentication-facebook)
+- [Twitter](http://scotch.io/tutorials/javascript/easy-node-authentication-twitter)
+- [Google](http://scotch.io/tutorials/javascript/easy-node-authentication-google)
+- [Linking All Accounts Together](http://scotch.io/tutorials/javascript/easy-node-authentication-linking-all-accounts-together)

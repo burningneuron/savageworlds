@@ -32,7 +32,7 @@ var app = express();
 
 // Set view engine to ejs
 app.set('view engine', 'ejs');
-app.set('port', (env.PORT || 5000));
+app.set('port', (env.port || 5000));
 
 // Use the body-parser package in our application
 app.use(bodyParser.urlencoded({

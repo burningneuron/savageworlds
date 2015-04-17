@@ -29,6 +29,11 @@
       if (user.local) {
         document.getElementById("user.local.email").innerHTML = user.local.email;
         document.getElementById("user.local.password").innerHTML = user.local.password;
+        document.getElementById("local.unlink").style.visibility = "visible";
+        document.getElementById("local.connect").style.visibility = "hidden";
+      } else {
+        document.getElementById("local.unlink").style.visibility = "hidden";
+        document.getElementById("local.connect").style.visibility = "visible";
       }
 
       if (user.facebook) {
@@ -36,6 +41,11 @@
         document.getElementById("user.facebook.token").innerHTML = user.facebook.token;
         document.getElementById("user.facebook.email").innerHTML = user.facebook.email;
         document.getElementById("user.facebook.name").innerHTML = user.facebook.name;
+        document.getElementById("facebook.unlink").style.visibility = "visible";
+        document.getElementById("facebook.connect").style.visibility = "hidden";
+      } else {
+        document.getElementById("facebook.unlink").style.visibility = "hidden";
+        document.getElementById("facebook.connect").style.visibility = "visible";
       }
 
       if (user.twitter) {
@@ -43,6 +53,11 @@
         document.getElementById("user.twitter.token").innerHTML = user.twitter.token;
         document.getElementById("user.twitter.displayName").innerHTML = user.twitter.displayName;
         document.getElementById("user.twitter.username").innerHTML = user.twitter.username;
+        document.getElementById("twitter.unlink").style.visibility = "visible";
+        document.getElementById("twitter.connect").style.visibility = "hidden";
+      } else {
+        document.getElementById("twitter.unlink").style.visibility = "hidden";
+        document.getElementById("twitter.connect").style.visibility = "visible";
       }
 
       if (user.google) {
@@ -50,6 +65,11 @@
         document.getElementById("user.google.token").innerHTML = user.google.token;
         document.getElementById("user.google.email").innerHTML = user.google.email;
         document.getElementById("user.google.name").innerHTML = user.google.name;
+        document.getElementById("google.unlink").style.visibility = "visible";
+        document.getElementById("google.connect").style.visibility = "hidden";
+      } else {
+        document.getElementById("google.unlink").style.visibility = "hidden";
+        document.getElementById("google.connect").style.visibility = "visible";
       }
     });
     </script>
@@ -75,8 +95,8 @@
                         <strong>password</strong>: <span id="user.local.password"></span>
                     </p>
 
-                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
-                    <a href="/connect/local" class="btn btn-default">Connect Local</a>
+                    <a href="/unlink/local" class="btn btn-default" id="local.unlink">Unlink</a>
+                    <a href="/connect/local" class="btn btn-default" id="local.connect">Connect Local</a>
 
             </div>
         </div>
@@ -94,8 +114,8 @@
                         <strong>name</strong>: <span id="user.facebook.name"></span><br>
                     </p>
 
-                    <a href="/unlink/facebook" class="btn btn-primary">Unlink</a>
-                    <a href="/connect/facebook" class="btn btn-primary">Connect Facebook</a>
+                    <a href="/unlink/facebook" class="btn btn-primary" id="facebook.unlink">Unlink</a>
+                    <a href="/connect/facebook" class="btn btn-primary" id="facebook.connect">Connect Facebook</a>
 
             </div>
         </div>
@@ -114,8 +134,8 @@
                         <strong>username</strong>: <span id="user.twitter.username"></span>
                     </p>
 
-                    <a href="/unlink/twitter" class="btn btn-info">Unlink</a>
-                    <a href="/connect/twitter" class="btn btn-info">Connect Twitter</a>
+                    <a href="/unlink/twitter" class="btn btn-info" id="twitter.unlink">Unlink</a>
+                    <a href="/connect/twitter" class="btn btn-info" id="twitter.connect">Connect Twitter</a>
 
             </div>
         </div>
@@ -132,8 +152,8 @@
                         <strong>name</strong>: <span id="user.google.name"></span>
                     </p>
 
-                    <a href="/unlink/google" class="btn btn-danger">Unlink</a>
-                    <a href="/connect/google" class="btn btn-danger">Connect Google</a>
+                    <a href="/unlink/google" class="btn btn-danger" id="google.unlink">Unlink</a>
+                    <a href="/connect/google" class="btn btn-danger" id="google.connect">Connect Google</a>
 
             </div>
         </div>

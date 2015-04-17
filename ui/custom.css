@@ -1,0 +1,19 @@
+li{
+  list-style-type: none;
+}
+body {
+    background-image: url('images/city.jpeg');
+    background-color: #cccccc;
+}
+.creation {
+  background-color: #eeddee;
+}
+.navbar {
+  height: 140px;
+  }
+p {
+  text-align: center;
+}
+footer {
+  background-color: #ffffff;
+}

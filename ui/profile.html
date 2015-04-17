@@ -22,14 +22,14 @@
     }
 
     aClient = new HttpClient();
-    aClient.get('/api/user', function(user) {
-      document.getElementById('user.id').textContent = user._id;
-      document.getElementById('user.local.email').textContent = user.local.email;
-      document.getElementById('user.local.password').textContent = user.local.password;
-      document.getElementById('user.facebook.id').textContent = user.facebook.id;
-      document.getElementById('user.facebook.token').textContent = user.facebook.token;
-      document.getElementById('user.facebook.email').textContent = user.facebook.email;
-      document.getElementById('user.facebook.name').textContent = user.facebook.name;
+    aClient.get("/api/user", function(user) {
+      document.getElementById("user.id").innerHTML = user._id;
+      document.getElementById("user.local.email").innerHTML = user.local.email;
+      document.getElementById("user.local.password").innerHTML = user.local.password;
+      document.getElementById("user.facebook.id").innerHTML = user.facebook.id;
+      document.getElementById("user.facebook.token").innerHTML = user.facebook.token;
+      document.getElementById("user.facebook.email").innerHTML = user.facebook.email;
+      document.getElementById("user.facebook.name").innerHTML = user.facebook.name;
     });
     </script>
 </head>
@@ -49,9 +49,9 @@
                 <h3><span class="fa fa-user"></span> Local</h3>
 
                     <p>
-                        <strong>id</strong>: <span id='user.id'/><br>
-                        <strong>email</strong>: <span id='user.local.email'/><br>
-                        <strong>password</strong>: <span id='user.local.password'/>
+                        <strong>id</strong>: <span id="user.id"/><br>
+                        <strong>email</strong>: <span id="user.local.email"/><br>
+                        <strong>password</strong>: <span id="user.local.password"/>
                     </p>
 
                     <a href="/unlink/local" class="btn btn-default">Unlink</a>
@@ -67,10 +67,10 @@
 
                 <!-- check if the user has this token (is the user authenticated with this social account) -->
                     <p>
-                        <strong>id</strong>: <span id='user.facebook.id'/><br>
-                        <strong>token</strong>: <span id='user.facebook.token'/><br>
-                        <strong>email</strong>: <span id='user.facebook.email'/><br>
-                        <strong>name</strong>: <span id='user.facebook.name'/><br>
+                        <strong>id</strong>: <span id="user.facebook.id"/><br>
+                        <strong>token</strong>: <span id="user.facebook.token"/><br>
+                        <strong>email</strong>: <span id="user.facebook.email"/><br>
+                        <strong>name</strong>: <span id="user.facebook.name"/><br>
                     </p>
 
                     <a href="/unlink/facebook" class="btn btn-primary">Unlink</a>

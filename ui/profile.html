@@ -26,30 +26,54 @@
       var user = JSON.parse(data);
       document.getElementById("user.id").innerHTML = user._id;
 
+      var el = document.getElementById("local.control");
       if (user.local) {
         document.getElementById("user.local.email").innerHTML = user.local.email;
         document.getElementById("user.local.password").innerHTML = user.local.password;
+        el.href = "/unlink/local";
+        el.innerHTML = "Unlink Local"
+      } else {
+        el.href = "/connect/local";
+        el.innerHTML = "Connect Local"
       }
 
+      el = document.getElementById("facebook.control");
       if (user.facebook) {
         document.getElementById("user.facebook.id").innerHTML = user.facebook.id;
         document.getElementById("user.facebook.token").innerHTML = user.facebook.token;
         document.getElementById("user.facebook.email").innerHTML = user.facebook.email;
         document.getElementById("user.facebook.name").innerHTML = user.facebook.name;
+        el.href = "/unlink/facebook";
+        el.innerHTML = "Unlink Facebook"
+      } else {
+        el.href = "/connect/facebook";
+        el.innerHTML = "Connect Facebook"
       }
 
+      el = document.getElementById("twitter.control");
       if (user.twitter) {
         document.getElementById("user.twitter.id").innerHTML = user.twitter.id;
         document.getElementById("user.twitter.token").innerHTML = user.twitter.token;
         document.getElementById("user.twitter.displayName").innerHTML = user.twitter.displayName;
         document.getElementById("user.twitter.username").innerHTML = user.twitter.username;
+        el.href = "/unlink/twitter";
+        el.innerHTML = "Unlink Twitter"
+      } else {
+        el.href = "/connect/twitter";
+        el.innerHTML = "Connect Twitter"
       }
 
+      el = document.getElementById("google.control");
       if (user.google) {
         document.getElementById("user.google.id").innerHTML = user.google.id;
         document.getElementById("user.google.token").innerHTML = user.google.token;
         document.getElementById("user.google.email").innerHTML = user.google.email;
         document.getElementById("user.google.name").innerHTML = user.google.name;
+        el.href = "/unlink/google";
+        el.innerHTML = "Unlink Google"
+      } else {
+        el.href = "/connect/google";
+        el.innerHTML = "Connect Google"
       }
     });
     </script>
@@ -75,8 +99,7 @@
                         <strong>password</strong>: <span id="user.local.password"></span>
                     </p>
 
-                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
-                    <a href="/connect/local" class="btn btn-default">Connect Local</a>
+                    <a href="/unlink/local" class="btn btn-default" id="local.control">Unlink</a>
 
             </div>
         </div>
@@ -94,8 +117,7 @@
                         <strong>name</strong>: <span id="user.facebook.name"></span><br>
                     </p>
 
-                    <a href="/unlink/facebook" class="btn btn-primary">Unlink</a>
-                    <a href="/connect/facebook" class="btn btn-primary">Connect Facebook</a>
+                    <a href="/unlink/facebook" class="btn btn-primary" id="facebook.control">Unlink</a>
 
             </div>
         </div>
@@ -114,8 +136,7 @@
                         <strong>username</strong>: <span id="user.twitter.username"></span>
                     </p>
 
-                    <a href="/unlink/twitter" class="btn btn-info">Unlink</a>
-                    <a href="/connect/twitter" class="btn btn-info">Connect Twitter</a>
+                    <a href="/unlink/twitter" class="btn btn-info" id="twitter.control">Unlink</a>
 
             </div>
         </div>
@@ -132,8 +153,7 @@
                         <strong>name</strong>: <span id="user.google.name"></span>
                     </p>
 
-                    <a href="/unlink/google" class="btn btn-danger">Unlink</a>
-                    <a href="/connect/google" class="btn btn-danger">Connect Google</a>
+                    <a href="/unlink/google" class="btn btn-danger" id="google.control">Unlink</a>
 
             </div>
         </div>

@@ -7,8 +7,33 @@
     <style>
         body         { padding-top:80px; word-wrap:break-word; }
     </style>
+    <script>
+    var HttpClient = function() {
+        this.get = function(aUrl, aCallback) {
+            var anHttpRequest = new XMLHttpRequest();
+            anHttpRequest.onreadystatechange = function() {
+                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                    aCallback(anHttpRequest.responseText);
+            }
+
+            anHttpRequest.open( "GET", aUrl, true );
+            anHttpRequest.send( null );
+        }
+    }
+
+    aClient = new HttpClient();
+    aClient.get('/api/user', function(user) {
+      document.getElementById('user.id').innerHTML = user._id;
+      document.getElementById('user.local.email').innerHTML = user.local.email;
+      document.getElementById('user.local.password').innerHTML = user.local.password;
+      document.getElementById('user.facebook.id').innerHTML = user.facebook.id;
+      document.getElementById('user.facebook.token').innerHTML = user.facebook.token;
+      document.getElementById('user.facebook.email').innerHTML = user.facebook.email;
+      document.getElementById('user.facebook.name').innerHTML = user.facebook.name;
+    });
+    </script>
 </head>
-<body>
+<body onload="getProfile()">
 <div class="container">
 
     <div class="page-header text-center">
@@ -23,17 +48,14 @@
             <div class="well">
                 <h3><span class="fa fa-user"></span> Local</h3>
 
-                <% if (user.local.email) { %>
                     <p>
-                        <strong>id</strong>: <%= user._id %><br>
-                        <strong>email</strong>: <%= user.local.email %><br>
-                        <strong>password</strong>: <%= user.local.password %>
+                        <strong>id</strong>: <span id='user.id'/><br>
+                        <strong>email</strong>: <span id='user.local.email'/> %><br>
+                        <strong>password</strong>: <span id='user.local.password'/>
                     </p>
 
                     <a href="/unlink/local" class="btn btn-default">Unlink</a>
-                <% } else { %>
                     <a href="/connect/local" class="btn btn-default">Connect Local</a>
-                <% } %>
 
             </div>
         </div>
@@ -44,18 +66,15 @@
                 <h3 class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
 
                 <!-- check if the user has this token (is the user authenticated with this social account) -->
-                <% if (user.facebook.token) { %>
                     <p>
-                        <strong>id</strong>: <%= user.facebook.id %><br>
-                        <strong>token</strong>: <%= user.facebook.token %><br>
-                        <strong>email</strong>: <%= user.facebook.email %><br>
-                        <strong>name</strong>: <%= user.facebook.name %><br>
+                        <strong>id</strong>: <span id='user.facebook.id'/><br>
+                        <strong>token</strong>: <span id='user.facebook.token'/><br>
+                        <strong>email</strong>: <span id='user.facebook.email'/><br>
+                        <strong>name</strong>: <span id='user.facebook.name'/><br>
                     </p>
 
                     <a href="/unlink/facebook" class="btn btn-primary">Unlink</a>
-                <% } else { %>
                     <a href="/connect/facebook" class="btn btn-primary">Connect Facebook</a>
-                <% } %>
 
             </div>
         </div>

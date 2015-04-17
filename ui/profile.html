@@ -22,7 +22,8 @@
     }
 
     aClient = new HttpClient();
-    aClient.get("/api/user", function(user) {
+    aClient.get("/api/user", function(data) {
+      var user = JSON.parse(data);
       document.getElementById("user.id").innerHTML = user._id;
       document.getElementById("user.local.email").innerHTML = user.local.email;
       document.getElementById("user.local.password").innerHTML = user.local.password;

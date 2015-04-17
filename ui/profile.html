@@ -23,13 +23,13 @@
 
     aClient = new HttpClient();
     aClient.get('/api/user', function(user) {
-      document.getElementById('user.id').text = user._id;
-      document.getElementById('user.local.email').text = user.local.email;
-      document.getElementById('user.local.password').text = user.local.password;
-      document.getElementById('user.facebook.id').text = user.facebook.id;
-      document.getElementById('user.facebook.token').text = user.facebook.token;
-      document.getElementById('user.facebook.email').text = user.facebook.email;
-      document.getElementById('user.facebook.name').text = user.facebook.name;
+      document.getElementById('user.id').textContent = user._id;
+      document.getElementById('user.local.email').textContent = user.local.email;
+      document.getElementById('user.local.password').textContent = user.local.password;
+      document.getElementById('user.facebook.id').textContent = user.facebook.id;
+      document.getElementById('user.facebook.token').textContent = user.facebook.token;
+      document.getElementById('user.facebook.email').textContent = user.facebook.email;
+      document.getElementById('user.facebook.name').textContent = user.facebook.name;
     });
     </script>
 </head>
@@ -50,7 +50,7 @@
 
                     <p>
                         <strong>id</strong>: <span id='user.id'/><br>
-                        <strong>email</strong>: <span id='user.local.email'/> %><br>
+                        <strong>email</strong>: <span id='user.local.email'/><br>
                         <strong>password</strong>: <span id='user.local.password'/>
                     </p>
 

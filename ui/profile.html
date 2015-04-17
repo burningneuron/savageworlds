@@ -23,13 +23,13 @@
 
     aClient = new HttpClient();
     aClient.get('/api/user', function(user) {
-      document.getElementById('user.id').innerHTML = user._id;
-      document.getElementById('user.local.email').innerHTML = user.local.email;
-      document.getElementById('user.local.password').innerHTML = user.local.password;
-      document.getElementById('user.facebook.id').innerHTML = user.facebook.id;
-      document.getElementById('user.facebook.token').innerHTML = user.facebook.token;
-      document.getElementById('user.facebook.email').innerHTML = user.facebook.email;
-      document.getElementById('user.facebook.name').innerHTML = user.facebook.name;
+      document.getElementById('user.id').text = user._id;
+      document.getElementById('user.local.email').text = user.local.email;
+      document.getElementById('user.local.password').text = user.local.password;
+      document.getElementById('user.facebook.id').text = user.facebook.id;
+      document.getElementById('user.facebook.token').text = user.facebook.token;
+      document.getElementById('user.facebook.email').text = user.facebook.email;
+      document.getElementById('user.facebook.name').text = user.facebook.name;
     });
     </script>
 </head>

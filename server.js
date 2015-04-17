@@ -40,7 +40,7 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
-require('./app/auth_routes.js').initalize(app, passport); // load our routes and pass in our app and fully configured passport
+require('./app/auth_routes.js').initialize(app, passport); // load our routes and pass in our app and fully configured passport
 require('./app/api_routes.js').initialize(app); // load our routes and pass in our app and fully configured passport
 
 // launch ======================================================================

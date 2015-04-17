@@ -25,16 +25,36 @@
     aClient.get("/api/user", function(data) {
       var user = JSON.parse(data);
       document.getElementById("user.id").innerHTML = user._id;
-      document.getElementById("user.local.email").innerHTML = user.local.email;
-      document.getElementById("user.local.password").innerHTML = user.local.password;
-      document.getElementById("user.facebook.id").innerHTML = user.facebook.id;
-      document.getElementById("user.facebook.token").innerHTML = user.facebook.token;
-      document.getElementById("user.facebook.email").innerHTML = user.facebook.email;
-      document.getElementById("user.facebook.name").innerHTML = user.facebook.name;
+
+      if (user.local) {
+        document.getElementById("user.local.email").innerHTML = user.local.email;
+        document.getElementById("user.local.password").innerHTML = user.local.password;
+      }
+
+      if (user.facebook) {
+        document.getElementById("user.facebook.id").innerHTML = user.facebook.id;
+        document.getElementById("user.facebook.token").innerHTML = user.facebook.token;
+        document.getElementById("user.facebook.email").innerHTML = user.facebook.email;
+        document.getElementById("user.facebook.name").innerHTML = user.facebook.name;
+      }
+
+      if (user.twitter) {
+        document.getElementById("user.twitter.id").innerHTML = user.twitter.id;
+        document.getElementById("user.twitter.token").innerHTML = user.twitter.token;
+        document.getElementById("user.twitter.displayName").innerHTML = user.twitter.displayName;
+        document.getElementById("user.twitter.username").innerHTML = user.twitter.username;
+      }
+
+      if (user.google) {
+        document.getElementById("user.google.id").innerHTML = user.google.id;
+        document.getElementById("user.google.token").innerHTML = user.google.token;
+        document.getElementById("user.google.email").innerHTML = user.google.email;
+        document.getElementById("user.google.name").innerHTML = user.google.name;
+      }
     });
     </script>
 </head>
-<body onload="getProfile()">
+<body>
 <div class="container">
 
     <div class="page-header text-center">
@@ -87,18 +107,15 @@
             <div class="well">
                 <h3 class="text-info"><span class="fa fa-twitter"></span> Twitter</h3>
 
-                <% if (user.twitter.token) { %>
                     <p>
-                        <strong>id</strong>: <%= user.twitter.id %><br>
-                        <strong>token</strong>: <%= user.twitter.token %><br>
-                        <strong>display name</strong>: <%= user.twitter.displayName %><br>
-                        <strong>username</strong>: <%= user.twitter.username %>
+                        <strong>id</strong>: <span id="user.twitter.id"></span><br>
+                        <strong>token</strong>: <span id="user.twitter.token"></span><br>
+                        <strong>display name</strong>: <span id="user.twitter.displayName"></span><br>
+                        <strong>username</strong>: <span id="user.twitter.username"></span>
                     </p>
 
                     <a href="/unlink/twitter" class="btn btn-info">Unlink</a>
-                <% } else { %>
                     <a href="/connect/twitter" class="btn btn-info">Connect Twitter</a>
-                <% } %>
 
             </div>
         </div>
@@ -108,18 +125,15 @@
             <div class="well">
                 <h3 class="text-danger"><span class="fa fa-google-plus"></span> Google+</h3>
 
-                <% if (user.google.token) { %>
                     <p>
-                        <strong>id</strong>: <%= user.google.id %><br>
-                        <strong>token</strong>: <%= user.google.token %><br>
-                        <strong>email</strong>: <%= user.google.email %><br>
-                        <strong>name</strong>: <%= user.google.name %>
+                        <strong>id</strong>: <span id="user.google.id"></span><br>
+                        <strong>token</strong>: <span id="user.google.token"></span><br>
+                        <strong>email</strong>: <span id="user.google.email"></span><br>
+                        <strong>name</strong>: <span id="user.google.name"></span>
                     </p>
 
                     <a href="/unlink/google" class="btn btn-danger">Unlink</a>
-                <% } else { %>
                     <a href="/connect/google" class="btn btn-danger">Connect Google</a>
-                <% } %>
 
             </div>
         </div>

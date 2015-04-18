@@ -7,7 +7,7 @@
 </head>
 <!--site index that includes a menus of your toons held on the site. These show up as a drop down menu listed as toon names  -->
 <body>
-  <form action='/api/character'>
+  <form action='/api/character' method='POST'>
   <header>
     <div class='navbar navbar-default'>
     <div class'container'>
@@ -120,8 +120,6 @@
           <ul class='list-unstyled'>
             <li><textarea rows="6" id="equip"></textarea></li>
           </ul>
-
-            <input type='submit' value='submit'>
         <div class='col-md-3'>
           <h2>Encumbrance:</h2>
           <ul class='list-unstyled'>
@@ -192,6 +190,7 @@
     </div>
   </div>
 </div>
+<input type='submit' value='submit'>
 </form>
   <footer class=container-fluid>
     <p>“This game references the Savage Worlds game system, available from Pinnacle Entertainment Group at www.peginc.com. Savage Worlds and all associated logos and trademarks are copyrights of Pinnacle Entertainment Group. Used with permission. Pinnacle makes no representation or warranty as to the quality, viability, or suitability for purpose of this product.”</p>

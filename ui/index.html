@@ -6,7 +6,7 @@
   <title>Savage Worlds Character Creator</title>
   <script>
     function poststuff() {
-      var name = document.getElementById("toon-name").innerHTML;
+      var name = document.getElementById("toon-name").textContent;
       var anHttpRequest = new XMLHttpRequest();
 
       anHttpRequest.onreadystatechange = function() {
@@ -18,7 +18,11 @@
 
 
       anHttpRequest.open( "POST", "/api/character", true );
-      anHttpRequest.send( JSON.stringify({name: name}) );
+      anHttpRequest.send( JSON.stringify({
+        character: {
+          name: name
+        }
+      }));
 
 
     }

@@ -16,7 +16,7 @@
           }
       }
 
-
+      anHttpRequest.setRequestHeader("Content-Type", "application/json");
       anHttpRequest.open( "POST", "/api/character", true );
       anHttpRequest.send( JSON.stringify({
         character: {

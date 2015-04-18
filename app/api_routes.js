@@ -37,7 +37,7 @@ var initialize = function(app) {
 
 	app.post('/api/character', isLoggedIn, function(req, res) {
 		// if the character has a valid id
-		if (req.body.character._id) {
+		if (req.body.character && req.body.character._id) {
 			// check to see if the character is owned by the current user
 			Character.find({
 				_id: req.body.character._id

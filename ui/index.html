@@ -4,17 +4,41 @@
   <link href='css/bootstrap.css' rel='stylesheet'>
   <link type='text/css' href='custom.css' rel='stylesheet'>
   <title>Savage Worlds Character Creator</title>
+  <script>
+    function poststuff() {
+      var name = document.getElementById("toon-name").innerHTML;
+      var anHttpRequest = new XMLHttpRequest();
+
+      anHttpRequest.onreadystatechange = function() {
+          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200) {
+
+            document.getElementById("response").innerHTML = anHttpRequest.responseText;
+          }
+      }
+
+
+      anHttpRequest.open( "POST", "/api/character", true );
+      anHttpRequest.send( JSON.stringify({name: name}) );
+
+
+    }
+  </script>
 </head>
+
 <!--site index that includes a menus of your toons held on the site. These show up as a drop down menu listed as toon names  -->
 <body>
   <a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a>
   <a href="/auth/twitter" class="btn btn-info"><span class="fa fa-twitter"></span> Twitter</a>
   <a href="/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span> Google+</a>
-
+<br/>
+<br/>
+<label id="response"></label>
+<br/>
+<br/>
   <form action='/api/character' method='POST' enctype="application/x-www-form-urlencoded">
     <label for="toon-name">Character Name:</label>
     <input id="toon-name" type="textbox" placeholder="Doug Greenlove"/>
-    <input type='submit' value='submit'>
+    <input type='button' onclick="poststuff()" value='submit'>
   </form>
   <footer class=container-fluid>
     <p>“This game references the Savage Worlds game system, available from Pinnacle Entertainment Group at www.peginc.com. Savage Worlds and all associated logos and trademarks are copyrights of Pinnacle Entertainment Group. Used with permission. Pinnacle makes no representation or warranty as to the quality, viability, or suitability for purpose of this product.”</p>

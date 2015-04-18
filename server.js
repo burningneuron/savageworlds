@@ -26,14 +26,14 @@ app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({
-	extended: true
+  // extended: true
 }));
 
 app.use(express.static('ui'));
 
 // required for passport
 app.use(session({
-	secret: 'ilovescotchscotchyscotchscotch'
+  secret: 'ilovescotchscotchyscotchscotch'
 })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions

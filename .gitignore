@@ -7,6 +7,7 @@ lib-cov
 *.pid
 *.gz
 
+.env
 .DS_Store
 
 
@@ -16,3 +17,5 @@ results
 
 npm-debug.log
 node_modules
+
+#bbui/js/app/models/User.js

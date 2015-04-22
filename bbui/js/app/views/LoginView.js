@@ -13,9 +13,6 @@ define(["jquery", "backbone", "models/User", "text!templates/user.html"],
       initialize: function() {
         // Calls the view's render method
         this.listenTo(this.model, 'change', this.render);
-        // this.listenTo(this.model, 'change:facebook.*', this.render);
-        // this.listenTo(this.model, 'change:twitter.*', this.render);
-        // this.listenTo(this.model, 'change:google.*', this.render);
         this.render();
 
       },

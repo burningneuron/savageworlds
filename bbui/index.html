@@ -24,9 +24,10 @@
   <!-- Mobile viewport optimized: h5bp.com/viewport -->
   <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
   <script>
+    // This script fixes a Facebook authentication bug.
+    // Facebook adds a hash to your URL that kills routing and breaks the page.
+    // This script removes said hash.
     if (window.location.hash && window.location.hash === "#_=_") {
-      // If you are not using Modernizr, then the alternative is:
-      //   `if (window.history && history.replaceState) {`
       if (window.history && window.history.replaceState) {
         window.history.replaceState("", document.title, window.location.pathname);
       } else {
@@ -179,7 +180,7 @@
 
         <div class="span12">
 
-          <div id="characterList"></div>
+          <div id="pageContent"></div>
 
         </div>
 

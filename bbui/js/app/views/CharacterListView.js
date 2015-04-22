@@ -7,19 +7,12 @@ define(["jquery", "backbone", "models/Character", "text!templates/characterListV
     var CharacterListView = Backbone.Marionette.CollectionView.extend({
       childView: CharacterSummaryView,
       // The DOM Element associated with this view
-      el: "#characterList",
+      el: "#pageContent",
       template: template,
 
       initialize: function() {
-        console.log('CharacterListView: initialize');
         this.render();
       },
-      onRender: function() {
-        console.log('CharacterListView: onRender')
-      },
-      onShow: function() {
-        console.log('CharacterListView: onShow')
-      }
 
     });
 

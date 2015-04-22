@@ -4,12 +4,13 @@ define(["jquery",
     "backbone",
     "models/User",
     "views/LoginView",
-    "collections/Collection",
+    "collections/CharacterCollection",
     "models/Character",
-    "views/CharacterListView"
+    "views/CharacterListView",
+    "Backbone.Marionette"
   ],
 
-  function($, Backbone, UserModel, LoginView, Collection, Character, CharacterListView) {
+  function($, Backbone, UserModel, LoginView, CharacterCollection, Character, CharacterListView) {
 
     var DesktopRouter = Backbone.Router.extend({
 
@@ -37,8 +38,11 @@ define(["jquery",
           model: user
         });
 
+        var characters = new CharacterCollection();
+        characters.fetch();
+        
         new CharacterListView({
-          model: new Character()
+          collection: characters
         });
       }
 

@@ -1,44 +1,30 @@
 // View.js
 // -------
-define(["jquery", "backbone", "models/Character", "text!templates/characterListView.html"],
+define(["jquery", "backbone", "models/Character", "text!templates/characterListView.html", "views/CharacterSummaryView", "Backbone.Marionette"],
 
-  function($, Backbone, Model, template) {
+  function($, Backbone, Model, template, CharacterSummaryView) {
 
-    var View = Backbone.View.extend({
-
+    var CharacterListView = Backbone.Marionette.CollectionView.extend({
+      childView: CharacterSummaryView,
       // The DOM Element associated with this view
-      el: ".example",
+      el: "#characterList",
+      template: template,
 
-      // View constructor
       initialize: function() {
-        // Calls the view's render method
-        this.listenTo(this.model, 'change', this.render);
+        console.log('CharacterListView: initialize');
         this.render();
-
       },
-
-      // View Event Handlers
-      events: {
-
+      onRender: function() {
+        console.log('CharacterListView: onRender')
       },
-
-      // Renders the view's template to the UI
-      render: function() {
-
-        // // Setting the view's template property using the Underscore template method
-        // this.template = _.template(template, this.model.attributes);
-        // Dynamically updates the UI with the view's template
-        this.$el.html(_.template(template, this.model.attributes));
-
-        // Maintains chainability
-        return this;
-
+      onShow: function() {
+        console.log('CharacterListView: onShow')
       }
 
     });
 
-    // Returns the View class
-    return View;
+    // Returns the CharacterListView class
+    return CharacterListView;
 
   }
 

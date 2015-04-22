@@ -25,6 +25,7 @@ require.config({
       // -------
       "backbone.validateAll": "../libs/plugins/Backbone.validateAll",
       "Backbone.DocumentModel": "../libs/plugins/backbone-documentmodel",
+      "Backbone.Marionette": "../libs/plugins/backbone.marionette",
 
       "bootstrap": "../libs/plugins/bootstrap",
 
@@ -49,6 +50,7 @@ require.config({
       // Backbone.validateAll plugin that depends on Backbone
       "backbone.validateAll": ["backbone"],
       "backbone.DocumentModel": ["backbone"],
+      "Backbone.Marionette": ["backbone"],
 
       // Jasmine-jQuery plugin
       "jasminejquery": ["jquery"]

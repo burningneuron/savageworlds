@@ -2,6 +2,7 @@ var User = require('./models/user');
 var Character = require('./models/character');
 var logger = require('../common/logger');
 var _ = require('lodash');
+var _hl = require('highland');
 
 var validRequest = function(request, response) {
   var character = null;
@@ -35,32 +36,32 @@ var getUser = function(req, res) {
   }
 };
 
-var getCharacters = function(req, res) {
-  Character.find({
-    // userId: req.user.id
-  }, function(err, characters) {
-    if (err) {
-      logger.err("Error on character find " + id + ": " + err);
-      res.send(err);
-    }
+var setCharacterDefaults = function(character) {
+  character.name = _.isEmpty(character.name) ? "* no name *" : character.name;
+  character.system = _.isEmpty(character.system) ? "* no system *" : character.system;
+  character.setting = _.isEmpty(character.setting) ? "* no setting *" : character.setting;
+  return character;
+};
 
-    res.json(characters);
-  });
+var getCharacters = function(req, res) {
+  _hl(Character.find({}))
+    .flatten()
+    .map(setCharacterDefaults)
+    .toArray(function(characters) {
+      res.json(characters);
+    });
 };
 
 var getCharacter = function(req, res) {
   var id = req.params.character_id;
 
-  Character.find({
-    _id: id
-  }, function(err, character) {
-    if (err) {
-      logger.err("Error on character find " + id + ": " + err);
-      res.send(err);
-    }
-
-    res.json(character);
-  });
+  _hl(Character.find({_id: id}))
+    .flatten()
+    .map(setCharacterDefaults)
+    .take(1)
+    .each(function(characters) {
+      res.json(characters);
+    });
 };
 
 var putCharacter = function(req, res) {

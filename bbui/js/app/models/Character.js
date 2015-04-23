@@ -6,6 +6,8 @@ define(["jquery", "backbone", "Backbone.DocumentModel"],
 
     // Creates a new Backbone Model class object
     var Model = Backbone.DocumentModel.extend({
+      idAttribute: '_id',
+      urlRoot: '/api/character',
 
       // Model Constructor
       initialize: function() {

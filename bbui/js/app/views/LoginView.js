@@ -1,6 +1,6 @@
 // View.js
 // -------
-define(["jquery", "backbone", "models/User", "text!templates/user.html"],
+define(["jquery", "backbone", "models/User", "text!templates/loginView.html"],
 
   function($, Backbone, Model, template) {
 
@@ -32,7 +32,6 @@ define(["jquery", "backbone", "models/User", "text!templates/user.html"],
       },
 
       gotoProfile: function() {
-        console.log('gotoProfile');
         this.router.navigate("profile", true);
       },
 
@@ -40,11 +39,7 @@ define(["jquery", "backbone", "models/User", "text!templates/user.html"],
       render: function() {
 
         // flatten the user model so it plays well with the template code
-        this.$el.html(_.template(template, {
-          facebookName: this.model.get('facebook.token') ? this.model.get('facebook.name') : null,
-          twitterName: this.model.get('twitter.token') ? this.model.get('twitter.username') : null,
-          googleName: this.model.get('google.token') ? this.model.get('google.name') : null,
-        }));
+        this.$el.html(_.template(template, this.model.toJSON()));
 
         // Maintains chainability
         return this;

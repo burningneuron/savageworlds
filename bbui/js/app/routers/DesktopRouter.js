@@ -2,48 +2,79 @@
 // ----------------
 define(["jquery",
     "backbone",
-    "models/User",
-    "views/LoginView",
     "collections/CharacterCollection",
+    "models/User",
     "models/Character",
+    "views/CharacterDetailView",
     "views/CharacterListView",
-    "Backbone.Marionette"
+    "views/LoginView",
+    "views/ProfileView",
+    "Backbone.Marionette",
   ],
 
-  function($, Backbone, UserModel, LoginView, CharacterCollection, Character, CharacterListView) {
+  function($, Backbone, CharacterCollection, UserModel, CharacterModel,
+    CharacterDetailView, CharacterListView, LoginView, ProfileView, Marionette) {
 
     var DesktopRouter = Backbone.Router.extend({
 
       initialize: function() {
 
+        this.user = new UserModel();
+        this.user.fetch();
+
+        // Instantiates a new view which will render the header text to the page
+        this.loginView = new LoginView({
+          router: this,
+          model: this.user
+        });
+
         // Tells Backbone to start watching for hashchange events
         Backbone.history.start();
-
       },
 
       // All of your Backbone Routes (add more)
       routes: {
 
         // When there is no hash on the url, the home method is called
-        "": "index"
+        "": "index",
+        "character?id=:id": "character",
+        "profile": "profile"
+
+      },
+
+      showView: function(view) {
+        if (this.currentView){
+          this.currentView.close ? this.currentView.close() : this.currentView.remove();
+        }
+
+        this.currentView = view;
+        $("#pageContent").html(this.currentView.el);
+        this.currentView.render();
 
       },
 
       index: function() {
-        var user = new UserModel();
-        user.fetch();
-
-        // Instantiates a new view which will render the header text to the page
-        new LoginView({
-          model: user
-        });
-
         var characters = new CharacterCollection();
         characters.fetch();
-        
-        new CharacterListView({
+
+        this.showView(new CharacterListView({
           collection: characters
+        }));
+      },
+
+      profile: function() {
+        this.showView(new ProfileView({model: this.user}));
+      },
+
+      character: function(id) {
+        var character = new CharacterModel({
+          id: id
         });
+        character.fetch();
+
+        this.showView(new CharacterDetailView({
+          model: character
+        }));
       }
 
     });

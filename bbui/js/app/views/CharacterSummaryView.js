@@ -16,6 +16,11 @@ define(["jquery", "backbone", "models/User", "text!templates/characterSummary.ht
 
       },
 
+      close: function() {
+        this.remove();
+        this.unbind();
+      },
+
       // View Event Handlers
       events: {
 

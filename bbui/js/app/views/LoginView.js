@@ -10,16 +10,30 @@ define(["jquery", "backbone", "models/User", "text!templates/user.html"],
       el: ".login",
 
       // View constructor
-      initialize: function() {
+      initialize: function(options) {
+        this.router = options.router;
         // Calls the view's render method
         this.listenTo(this.model, 'change', this.render);
         this.render();
 
       },
 
+      close: function() {
+        this.remove();
+        this.unbind();
+      },
+
       // View Event Handlers
       events: {
+        "click #facebookbutton": "gotoProfile",
+        "click #twitterbutton": "gotoProfile",
+        "click #googlebutton": "gotoProfile",
 
+      },
+
+      gotoProfile: function() {
+        console.log('gotoProfile');
+        this.router.navigate("profile", true);
       },
 
       // Renders the view's template to the UI

@@ -43,7 +43,7 @@ define(["jquery",
       },
 
       showView: function(view) {
-        if (this.currentView){
+        if (this.currentView) {
           this.currentView.close ? this.currentView.close() : this.currentView.remove();
         }
 
@@ -58,21 +58,26 @@ define(["jquery",
         characters.fetch();
 
         this.showView(new CharacterListView({
+          router: this,
           collection: characters
         }));
       },
 
       profile: function() {
-        this.showView(new ProfileView({model: this.user}));
+        this.showView(new ProfileView({
+          router: this,
+          model: this.user
+        }));
       },
 
       character: function(id) {
         var character = new CharacterModel({
-          id: id
+          _id: id
         });
         character.fetch();
 
         this.showView(new CharacterDetailView({
+          router: this,
           model: character
         }));
       }

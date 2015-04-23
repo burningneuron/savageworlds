@@ -8,7 +8,8 @@ define(["jquery", "backbone", "models/User", "text!templates/profile.html"],
 
 
       // View constructor
-      initialize: function() {
+      initialize: function(options) {
+        this.router = options.router;
         // Calls the view's render method
         this.listenTo(this.model, 'change', this.render);
         this.render();
@@ -22,7 +23,12 @@ define(["jquery", "backbone", "models/User", "text!templates/profile.html"],
 
       // View Event Handlers
       events: {
+        "click #characterList": "gotoCharacterList",
 
+      },
+
+      gotoCharacterList: function() {
+        this.router.navigate("", true);
       },
 
       // Renders the view's template to the UI

@@ -9,7 +9,11 @@ define(["jquery", "backbone", "models/Character", "text!templates/characterListV
       // The DOM Element associated with this view
       template: template,
 
-      initialize: function() {
+      initialize: function(options) {
+        this.childViewOptions = {
+          router: options.router
+        };
+        this.router = options.router;
         this.render();
       },
 

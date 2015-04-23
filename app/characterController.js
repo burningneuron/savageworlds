@@ -37,9 +37,9 @@ var getUser = function(req, res) {
 };
 
 var setCharacterDefaults = function(character) {
-  character.name = _.isEmpty(character.name) ? "* no name *" : character.name;
-  character.system = _.isEmpty(character.system) ? "* no system *" : character.system;
-  character.setting = _.isEmpty(character.setting) ? "* no setting *" : character.setting;
+  // character.name = _.isEmpty(character.name) ? "* no name *" : character.name;
+  // character.system = _.isEmpty(character.system) ? "* no system *" : character.system;
+  // character.setting = _.isEmpty(character.setting) ? "* no setting *" : character.setting;
   return character;
 };
 

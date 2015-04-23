@@ -9,7 +9,8 @@ define(["jquery", "backbone", "models/User", "text!templates/characterSummary.ht
       // The DOM Element associated with this view
 
       // View constructor
-      initialize: function() {
+      initialize: function(options) {
+        this.router = options.router;
         // Calls the view's render method
         this.listenTo(this.model, 'change', this.render);
         this.render();
@@ -23,7 +24,11 @@ define(["jquery", "backbone", "models/User", "text!templates/characterSummary.ht
 
       // View Event Handlers
       events: {
+        "click #character": "showCharacter"
+      },
 
+      showCharacter: function() {
+        this.router.navigate("character?id=" + this.model.get('_id'), true);
       },
 
       // Renders the view's template to the UI

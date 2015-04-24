@@ -12,14 +12,16 @@
   <div class="col-sm-4">
     <div class="well">
       <h4 class="text-center">Background</h4>
-      <strong>System</strong>: <span><%= system %></span><br/>
-      <strong>Setting</strong>: <span><%= setting %></span><br/>
-      <strong>Player</strong>: <span><%= player %></span><br/>
-      <strong>Name</strong>: <span><%= name %></span><br/>
-      <strong>Race</strong>: <span><%= race %></span><br/>
-      <strong>Rank</strong>: <span><%= rank %></span><br/>
-      <strong>Experience</strong>: <span><%= xp %></span><br/>
-
+      <table class="table-condensed">
+        <tr><td align="right"><strong>System</strong></td><td><span><%= system %></span></td></tr>
+        <tr><td align="right"><strong>Setting</strong></td><td><input type="text" class="input-sm base" name="setting" value="<%= setting %>" size="25" /></td></tr>
+        <tr><td align="right"><strong>Player</strong></td><td><input type="text" class="input-sm base" name="player" value="<%= player %>" size="25" /></td></tr>
+        <tr><td align="right"><strong>Name</strong></td><td><input type="text" class="input-sm base" name="name" value="<%= name %>" size="25" /></td></tr>
+        <tr><td align="right"><strong>Race</strong></td><td><input type="text" class="input-sm base" name="race" value="<%= race %>" size="25" /></td></tr>
+        <tr><td align="right"><strong>Rank</strong></td><td><input type="text" class="input-sm base" name="rank" value="<%= rank %>" size="25" /></td></tr>
+        <tr><td align="right"><strong>Experience</strong></td><td><input type="text" class="input-sm base" name="xp" value="<%= xp %>" size="25" /></td></tr>
+        <tr><td align="right"><strong>Money</strong></td><td><input type="text" class="input-sm base" name="money" value="<%= money %>" size="25" /></td></tr>
+      </table>
     </div>
     <div class="well">
       <h4 class="text-center">Skills</h4>
@@ -29,18 +31,32 @@
   <div class="col-sm-4">
     <div class="well">
       <h4 class="text-center">Attributes</h4>
-      <strong>Agility</strong>: <span ><%= agility %></span><br/>
-      <strong>Smarts</strong>: <span ><%= smarts %></span><br/>
-      <strong>Spirit</strong>: <span ><%= spirit %></span><br/>
-      <strong>Strength</strong>: <span ><%= strength %></span><br/>
-      <strong>Vigor</strong>: <span ><%= vigor %></span>
+      <table class="table-condensed">
+        <tr>
+          <td align="right"><strong>Agility</strong></td><td><input type="text" class="input-sm base" name="agility" value="<%= agility %>" size="5" /></td>
+          <td align="right"><strong>Charisma</strong></td><td><input type="text" class="input-sm base" name="charisma" value="<%= charisma %>" size="10" /></td>
+        </tr>
+        <tr>
+          <td align="right"><strong>Smarts</strong></td><td><input type="text" class="input-sm base" name="smarts" value="<%= smarts %>" size="5" /></td>
+          <td align="right"><strong>Pace</strong></td><td><input type="text" class="input-sm base" name="pace" value="<%= pace %>" size="10" /></td>
+        </tr>
+        <tr>
+          <td align="right"><strong>Spirit</strong></td><td><input type="text" class="input-sm base" name="spirit" value="<%= spirit %>" size="5" /></td>
+          <td align="right"><strong>Parry</strong></td><td><input type="text" class="input-sm base" name="parry" value="<%= parry %>" size="10" /></td>
+        </tr>
+        <tr>
+          <td align="right"><strong>Strength</strong></td><td><input type="text" class="input-sm base" name="strength" value="<%= strength %>" size="5" /></td>
+          <td align="right"><strong>Toughness</strong></td><td><input type="text" class="input-sm base" name="toughness" value="<%= toughness %>" size="10" /></td>
+        </tr>
+        <tr>
+          <td align="right"><strong>Vigor</strong></td><td><input type="text" class="input-sm base" name="vigor" value="<%= vigor %>" size="5" /></td>
+          <td align="right">&nbsp;</td><td>&nbsp;</td>
+        </tr>
+      </table>
     </div>
     <div class="well">
-      <h4 class="text-center">Derived Statistics</h4>
-      <strong>Pace</strong>: <span ><%= pace %></span><br/>
-      <strong>Parry</strong>: <span ><%= parry %></span><br/>
-      <strong>Toughness</strong>: <span ><%= toughness %></span><br/>
-      <strong>Charisma</strong>: <span ><%= charisma %></span><br/>
+      <h4 class="text-center">Equipment</h4>
+      <div id="equipment"></div>
     </div>
   </div>
   <div class="col-sm-4">
@@ -59,6 +75,14 @@
     <div class="well">
       <h4 class="text-center">Weapons</h4>
       <div id="weapons"></div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="well">
+      <h4 class="text-center">Powers</h4>
+      <div id="powers"></div>
     </div>
   </div>
 </div>

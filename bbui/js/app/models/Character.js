@@ -24,6 +24,7 @@ define(["jquery", "backbone", "Backbone.DocumentModel"],
         race: "Human",
         rank: "Novice",
         xp: "0",
+        money: "500",
 
         agility: "d4",
         smarts: "d4",
@@ -45,6 +46,13 @@ define(["jquery", "backbone", "Backbone.DocumentModel"],
         }, {
           name: "Notice",
           value: "d10"
+        }],
+        equipment: [{
+          name: "Backpack",
+          weight: "2"
+        }, {
+          name: "Bedroll",
+          weight: "4"
         }],
         edges: [{
           name: "Ace",

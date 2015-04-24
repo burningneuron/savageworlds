@@ -49,24 +49,24 @@ define(["jquery", "backbone", "Backbone.DocumentModel"],
         edges: [{
           name: "Ace",
           requirements: "N, A d8",
-          effects: "+2 to Boating, Driving, Piloting; may make Soak rolls for vehicle at –2"
+          effect: "+2 to Boating, Driving, Piloting; may make Soak rolls for vehicle at –2"
         },{
           name: "Quick",
           requirements: "N",
-          effects: "Discard draw of 5 or less for new card"
+          effect: "Discard draw of 5 or less for new card"
         }],
         hindrances: [{
           name: "Heroic",
           type: "Major",
-          effects: "Character always helps those in need"
+          effect: "Character always helps those in need"
         },{
           name: "Quirk",
           type: "Minor",
-          effects: "Character has some minor but persistent foible"
+          effect: "Character has some minor but persistent foible"
         },{
           name: "Cautious",
           type: "Minor",
-          effects: "Character is overly careful"
+          effect: "Character is overly careful"
         }],
         powers: []
       },

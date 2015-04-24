@@ -3,34 +3,40 @@
 define(["jquery",
     "backbone",
     "models/Character",
-    "views/ListView",
     "text!templates/characterDetailView.html",
-    "text!templates/skillDetailView.html",
-    "views/SkillView"
+    "views/SkillListView",
+    "views/EdgeListView",
+    "views/HindranceListView",
   ],
 
-  function($, Backbone, Character, ListView, template, skillTemplate, SkillView) {
+  function($, Backbone, Character, template, SkillListView, EdgeListView, HindranceListView) {
 
     var View = Backbone.View.extend({
-
-
       // View constructor
       initialize: function(options) {
         this.router = options.router;
         // Calls the view's render method
         this.listenTo(this.model, 'change', this.render);
 
-        this.skillListView = new SkillView({
-          template: skillTemplate,
+        this.skillView = new SkillListView({
           router: this.router,
           collection: this.model.get('skills')
         });
 
-        this.render();
+        this.edgeView = new EdgeListView({
+          router: this.router,
+          collection: this.model.get('edges')
+        });
+
+        this.hindranceView = new HindranceListView({
+          router: this.router,
+          collection: this.model.get('hindrances')
+        });
+
       },
 
       close: function() {
-        this.skillListView.close();
+        this.skillView.close();
         this.remove();
         this.unbind();
       },
@@ -42,16 +48,28 @@ define(["jquery",
       },
 
       gotoCharacterList: function() {
-        this.router.navigate("", true);
+        console.log(this.model.toJSON());
+        // this.router.navigate("", true);
       },
 
       // Renders the view's template to the UI
       render: function() {
-
-        // flatten the user model so it plays well with the template code
+console.log('main render');
         this.$el.html(_.template(template, this.model.attributes));
 
-        this.$("#skills").append(this.skillListView.render().el);
+        this.skillView.$el = this.$("#skills");
+        this.skillView.render();
+        this.skillView.delegateEvents();
+
+        this.edgeView.$el = this.$("#edges");
+        this.edgeView.render();
+        this.edgeView.delegateEvents();
+
+        this.hindranceView.$el = this.$("#hindrances");
+        this.hindranceView.render();
+        this.hindranceView.delegateEvents();
+
+        // this.$("#skills").append(this.skillView.render().$el);
         // Maintains chainability
         return this;
 

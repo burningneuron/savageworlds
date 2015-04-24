@@ -2,16 +2,14 @@
 // -------
 define(["jquery",
     "backbone",
-    "views/ListItemView",
-    "text!templates/skillDetailView.html",
     "Backbone.Marionette"
   ],
 
-  function($, Backbone, ListItemView, template, Marionette) {
+  function($, Backbone, Marionette) {
     var ListView = Backbone.Marionette.CollectionView.extend({
-      childView: ListItemView,
-      // The DOM Element associated with this view
+
       initialize: function(options) {
+        this.childView = options.childView;
         this.childViewOptions = {
           template: options.template,
           router: options.router

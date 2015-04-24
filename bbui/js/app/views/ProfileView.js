@@ -1,6 +1,6 @@
 // View.js
 // -------
-define(["jquery", "backbone", "models/User", "text!templates/profile.html"],
+define(["jquery", "backbone", "models/User", "text!templates/profileView.html"],
 
   function($, Backbone, Model, template) {
 

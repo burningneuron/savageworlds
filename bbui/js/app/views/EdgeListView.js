@@ -1,41 +1,49 @@
 define(["jquery",
     "backbone",
     "views/ListView",
-    "text!templates/skillListView.html",
-    "text!templates/skillDetailView.html",
+    "views/EdgeDetailView",
+    "text!templates/edgeListView.html",
+    "text!templates/edgeDetailView.html",
     "Backbone.Marionette"
   ],
-  function($, Backbone, ListView, listTemplate, itemTemplate) {
-    var SkillView = Backbone.View.extend({
+  function($, Backbone, ListView, EdgeDetailView, listTemplate, edgeTemplate) {
+    var EdgeListView = Backbone.View.extend({
       initialize: function(options) {
         this.router = options.router;
         this.template = listTemplate;
-        // Calls the view's render method
+
         this.listView = new ListView({
-          template: itemTemplate,
+          childView: EdgeDetailView,
+          template: edgeTemplate,
           router: this.router,
           collection: options.collection
         });
 
-        // this.listenTo(this.model, 'change', this.render);
-        this.render();
       },
 
       close: function() {
+        this.listView.close();
         this.remove();
         this.unbind();
       },
 
-      events: {},
+      events: {
+        'click a#addEdge': 'addEdge'
+      },
+
+      addEdge: function() {
+        console.log('addEdge');
+      },
 
       render: function() {
-        this.$el.html(this.listView.render().el);
+        this.$el.html(this.listView.render().$el);
         this.$el.append(_.template(this.template, {}));
+
         return this;
       }
     });
 
     // Returns the View class
-    return SkillView;
+    return EdgeListView;
   }
 );

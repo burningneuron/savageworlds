@@ -2,9 +2,9 @@
   <div class="col-sm-3">
     <a class="btn" id="characterList">Back to character list...</a>
   </div>
-  <div class="col-sm-8">
+  <div class="col-sm-6">
   </div>
-  <div class="col-sm-1">
+  <div class="col-sm-3 text-right" >
     <a class="btn" id="editMode">Edit Mode</a>
   </div>
 </div>
@@ -21,8 +21,12 @@
       <strong>Experience</strong>: <span><%= xp %></span><br/>
 
     </div>
+    <div class="well">
+      <h4 class="text-center">Skills</h4>
+      <div id="skills"></div>
+    </div>
   </div>
-  <div class="col-sm-2">
+  <div class="col-sm-3">
     <div class="well">
       <h4 class="text-center">Attributes</h4>
       <strong>Agility</strong>: <span ><%= agility %></span><br/>
@@ -32,7 +36,7 @@
       <strong>Vigor</strong>: <span ><%= vigor %></span>
     </div>
   </div>
-  <div class="col-sm-2">
+  <div class="col-sm-3">
     <div class="well">
       <h4 class="text-center">Derived Statistics</h4>
       <strong>Pace</strong>: <span ><%= pace %></span><br/>
@@ -41,10 +45,14 @@
       <strong>Charisma</strong>: <span ><%= charisma %></span><br/>
     </div>
   </div>
-  <div class="col-sm-2">
+  <div class="col-sm-3">
     <div class="well">
-      <h4 class="text-center">Skills</h4>
-      <div id="skills"></div>
+      <h4 class="text-center">Edges</h4>
+      <div id="edges"></div>
+    </div>
+    <div class="well">
+      <h4 class="text-center">Hindrances</h4>
+      <div id="hindrances"></div>
     </div>
   </div>
 </div>

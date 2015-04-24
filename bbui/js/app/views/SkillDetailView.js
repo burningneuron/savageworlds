@@ -16,13 +16,16 @@ define(["jquery", "backbone", "Backbone.Marionette"],
 
       events: {
         'keyup input.skill': 'updateModel',
+        'click a.skill': 'deleteModel'
         // 'click a#button': 'updateModel'
         // "keyup .value": "updateModel"
       },
 
-      updateModel: function(d) {
+      deleteModel: function() {
+        this.model.destroy();
+      },
 
-        console.log('updateModel');
+      updateModel: function() {
         this.model.set('name', this.$("[name='name']").val());
         this.model.set('value', this.$("[name='value']").val());
       },

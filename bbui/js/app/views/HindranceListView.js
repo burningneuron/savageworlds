@@ -32,7 +32,7 @@ define(["jquery",
       },
 
       addHindrance: function() {
-        console.log('addHindrance');
+        this.listView.collection.add({name: "", effect:""});
       },
 
       render: function() {

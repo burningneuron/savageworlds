@@ -32,7 +32,7 @@ define(["jquery",
       },
 
       addSkill: function() {
-        console.log('addSkill');
+        this.listView.collection.add({name: "", value:""});
       },
 
       render: function() {

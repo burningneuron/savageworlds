@@ -32,7 +32,7 @@ define(["jquery",
       },
 
       addEdge: function() {
-        console.log('addEdge');
+        this.listView.collection.add({name: "", effect:""});
       },
 
       render: function() {

@@ -16,8 +16,7 @@ define(["jquery",
           childView: WeaponDetailView,
           template: weaponTemplate,
           router: this.router,
-          collection: options.collection,
-          tagName: 'tbody'
+          collection: options.collection
         });
 
       },

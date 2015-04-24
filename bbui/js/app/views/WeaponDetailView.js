@@ -1,8 +1,7 @@
 define(["jquery", "backbone", "Backbone.Marionette"],
   function($, Backbone) {
     var WeaponDetailView = Backbone.Marionette.ItemView.extend({
-      tagName: 'tr',
-      
+
       initialize: function(options) {
         this.router = options.router;
         this.template = options.template;

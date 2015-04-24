@@ -36,8 +36,8 @@ define(["jquery",
       },
 
       render: function() {
-        this.$el.html(this.listView.render().$el);
         this.$el.append(_.template(this.template, {}));
+        this.$("#edgeTable").append(this.listView.render().$el);
 
         return this;
       }

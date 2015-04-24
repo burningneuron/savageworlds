@@ -30,7 +30,7 @@ define(["jquery",
       },
 
       addEquipment: function() {
-        this.listView.collection.add({name: "", value:""});
+        this.listView.collection.add({name: "", weight:""});
       },
 
       render: function() {

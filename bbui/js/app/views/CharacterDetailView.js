@@ -10,11 +10,12 @@ define(["jquery",
     "views/WeaponListView",
     "views/PowerListView",
     "views/EquipmentListView",
+    "views/AdvancementView"
   ],
 
   function($, Backbone, Character, template,
     SkillListView, EdgeListView, HindranceListView, WeaponListView, PowerListView,
-    EquipmentListView) {
+    EquipmentListView, AdvancementView) {
 
     var View = Backbone.View.extend({
       // View constructor
@@ -27,39 +28,40 @@ define(["jquery",
         //   model: this.model
         // });
 
-        this.skillView = new SkillListView({
-          collection: this.model.get('skills')
-        });
+        this.subviews = [];
 
-        this.equipmentView = new EquipmentListView({
-          collection: this.model.get('equipment')
-        });
-
-        this.edgeView = new EdgeListView({
-          collection: this.model.get('edges')
-        });
-
-        this.hindranceView = new HindranceListView({
-          collection: this.model.get('hindrances')
-        });
-
-        this.weaponView = new WeaponListView({
-          collection: this.model.get('weapons')
-        });
-
-        this.powerView = new PowerListView({
-          collection: this.model.get('powers')
-        });
+        this.addSubView(SkillListView, 'skills');
+        this.addSubView(EquipmentListView, 'equipment');
+        this.addSubView(EdgeListView, 'edges');
+        this.addSubView(HindranceListView, 'hindrances');
+        this.addSubView(WeaponListView, 'weapons');
+        this.addSubView(PowerListView, 'powers');
+        this.addSubView(AdvancementView, 'advancement', true);
 
       },
 
+      addSubView: function(ViewConstructor, property, useModel) {
+        if (useModel) {
+          this.subviews.push({
+            view: new ViewConstructor({
+              model: this.model.get(property)
+            }),
+            anchor: "#" + property
+          });
+        } else {
+          this.subviews.push({
+            view: new ViewConstructor({
+              collection: this.model.get(property)
+            }),
+            anchor: "#" + property
+          });
+        }
+      },
+
       close: function() {
-        this.backgroundView.close();
-        this.skillView.close();
-        this.edgeView.close();
-        this.hindranceView.close();
-        this.weaponView.close();
-        this.powerView.close();
+        this.subviews.forEach(function(item) {
+          item.view.close();
+        }.bind(this));
         this.remove();
         this.unbind();
       },
@@ -101,32 +103,13 @@ define(["jquery",
       render: function() {
         this.$el.html(_.template(template, this.model.attributes));
 
-        this.skillView.$el = this.$("#skills");
-        this.skillView.render();
-        this.skillView.delegateEvents();
-
-        this.equipmentView.$el = this.$("#equipment");
-        this.equipmentView.render();
-        this.equipmentView.delegateEvents();
-
-        this.edgeView.$el = this.$("#edges");
-        this.edgeView.render();
-        this.edgeView.delegateEvents();
-
-        this.hindranceView.$el = this.$("#hindrances");
-        this.hindranceView.render();
-        this.hindranceView.delegateEvents();
-
-        this.weaponView.$el = this.$("#weapons");
-        this.weaponView.render();
-        this.weaponView.delegateEvents();
-
-        this.powerView.$el = this.$("#powers");
-        this.powerView.render();
-        this.powerView.delegateEvents();
+        this.subviews.forEach(function(item) {
+          item.view.$el = this.$(item.anchor);
+          item.view.render();
+          item.view.delegateEvents();
+        }.bind(this));
 
         return this;
-
       }
 
     });

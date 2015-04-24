@@ -5,8 +5,6 @@ define(["jquery", "backbone", "models/User", "text!templates/profileView.html"],
   function($, Backbone, Model, template) {
 
     var View = Backbone.View.extend({
-
-
       // View constructor
       initialize: function(options) {
         this.router = options.router;

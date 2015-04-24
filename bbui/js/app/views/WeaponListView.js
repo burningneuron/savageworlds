@@ -30,7 +30,6 @@ define(["jquery",
       },
 
       addWeapon: function() {
-        console.log('addWeapon');
         this.listView.collection.add({
           name: "",
           range: "",

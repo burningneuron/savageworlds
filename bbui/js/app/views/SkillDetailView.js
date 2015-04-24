@@ -2,11 +2,7 @@ define(["jquery", "backbone", "Backbone.Marionette"],
   function($, Backbone) {
     var SkillDetailView = Backbone.Marionette.ItemView.extend({
       initialize: function(options) {
-        this.router = options.router;
         this.template = options.template;
-        // Calls the view's render method
-        // this.listenTo(this.model, 'change', this.render);
-        // this.$('input .skillValue').focus(this.updateModel);
       },
 
       close: function() {
@@ -15,10 +11,8 @@ define(["jquery", "backbone", "Backbone.Marionette"],
       },
 
       events: {
-        'keyup input.skill': 'updateModel',
+        'change input.skill': 'updateModel',
         'click a.skill': 'deleteModel'
-        // 'click a#button': 'updateModel'
-        // "keyup .value": "updateModel"
       },
 
       deleteModel: function() {

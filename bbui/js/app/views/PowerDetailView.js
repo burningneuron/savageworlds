@@ -3,11 +3,7 @@ define(["jquery", "backbone", "Backbone.Marionette"],
     var PowerDetailView = Backbone.Marionette.ItemView.extend({
 
       initialize: function(options) {
-        this.router = options.router;
         this.template = options.template;
-        // Calls the view's render method
-        // this.listenTo(this.model, 'change', this.render);
-        // this.$('input .skillValue').focus(this.updateModel);
       },
 
       close: function() {
@@ -16,10 +12,8 @@ define(["jquery", "backbone", "Backbone.Marionette"],
       },
 
       events: {
-        'keyup input.power': 'updateModel',
+        'change input.power': 'updateModel',
         'click a.power': 'deleteModel'
-        // 'click a#button': 'updateModel'
-        // "keyup .value": "updateModel"
       },
 
       deleteModel: function() {

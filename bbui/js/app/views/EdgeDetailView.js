@@ -2,11 +2,7 @@ define(["jquery", "backbone", "Backbone.Marionette"],
   function($, Backbone) {
     var EdgeDetailView = Backbone.Marionette.ItemView.extend({
       initialize: function(options) {
-        this.router = options.router;
         this.template = options.template;
-        // Calls the view's render method
-        // this.listenTo(this.model, 'change', this.render);
-        // this.$('input .edgeValue').focus(this.updateModel);
       },
 
       close: function() {
@@ -15,7 +11,7 @@ define(["jquery", "backbone", "Backbone.Marionette"],
       },
 
       events: {
-        'keyup input.edge': 'updateModel',
+        'change input.edge': 'updateModel',
         'click a.edge': 'deleteModel'
       },
 

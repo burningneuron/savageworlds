@@ -30,7 +30,6 @@ define(["jquery",
       },
 
       addPower: function() {
-        console.log('addPower');
         this.listView.collection.add({
           power_points: "",
           name: "",

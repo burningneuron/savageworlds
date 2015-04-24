@@ -37,6 +37,11 @@ define(["jquery", "backbone", "Backbone.DocumentModel"],
         toughness: "4",
         charisma: "0",
 
+        advancement: {
+          x5:"",x10:"",x15:"",x20:"",x25:"",x30:"",x35:"",
+          x40:"",x45:"",x50:"",x55:"",x60:"",x65:"",x70:"",x75:"",
+          x80:"",x90:"",x100:"",x110:""
+        },
         skills: [{
           name: "Shooting",
           value: "d8"

@@ -7,9 +7,10 @@ define(["jquery",
     "views/SkillListView",
     "views/EdgeListView",
     "views/HindranceListView",
+    "views/WeaponListView",
   ],
 
-  function($, Backbone, Character, template, SkillListView, EdgeListView, HindranceListView) {
+  function($, Backbone, Character, template, SkillListView, EdgeListView, HindranceListView, WeaponListView) {
 
     var View = Backbone.View.extend({
       // View constructor
@@ -31,6 +32,11 @@ define(["jquery",
         this.hindranceView = new HindranceListView({
           router: this.router,
           collection: this.model.get('hindrances')
+        });
+
+        this.weaponView = new WeaponListView({
+          router: this.router,
+          collection: this.model.get('weapons')
         });
 
       },
@@ -69,8 +75,10 @@ console.log('main render');
         this.hindranceView.render();
         this.hindranceView.delegateEvents();
 
-        // this.$("#skills").append(this.skillView.render().$el);
-        // Maintains chainability
+        this.weaponView.$el = this.$("#weapons");
+        this.weaponView.render();
+        this.weaponView.delegateEvents();
+
         return this;
 
       }

@@ -1,6 +1,8 @@
 define(["jquery", "backbone", "Backbone.Marionette"],
   function($, Backbone) {
     var WeaponDetailView = Backbone.Marionette.ItemView.extend({
+      tagName: 'tr',
+      
       initialize: function(options) {
         this.router = options.router;
         this.template = options.template;
@@ -22,10 +24,12 @@ define(["jquery", "backbone", "Backbone.Marionette"],
       },
 
       deleteModel: function() {
+        console.log('deleteModel');
         this.model.destroy();
       },
 
       updateModel: function() {
+        console.log('updateModel');
         this.model.set('name', this.$("[name='name']").val());
         this.model.set('range', this.$("[name='range']").val());
         this.model.set('damage', this.$("[name='damage']").val());

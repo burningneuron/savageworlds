@@ -16,7 +16,8 @@ define(["jquery",
           childView: WeaponDetailView,
           template: weaponTemplate,
           router: this.router,
-          collection: options.collection
+          collection: options.collection,
+          tagName: 'tbody'
         });
 
       },
@@ -32,6 +33,7 @@ define(["jquery",
       },
 
       addWeapon: function() {
+        console.log('addWeapon');
         this.listView.collection.add({
           name: "",
           range: "",
@@ -45,8 +47,8 @@ define(["jquery",
       },
 
       render: function() {
-        this.$el.html(this.listView.render().$el);
         this.$el.append(_.template(this.template, {}));
+        this.$("#weaponTable").append(this.listView.render().$el);
 
         return this;
       }

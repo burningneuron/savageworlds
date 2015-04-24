@@ -9,13 +9,11 @@ define(["jquery",
   function($, Backbone, ListView, PowerDetailView, listTemplate, powerTemplate) {
     var PowerListView = Backbone.View.extend({
       initialize: function(options) {
-        this.router = options.router;
         this.template = listTemplate;
 
         this.listView = new ListView({
           childView: PowerDetailView,
           template: powerTemplate,
-          router: this.router,
           collection: options.collection
         });
 

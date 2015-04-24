@@ -9,13 +9,11 @@ define(["jquery",
   function($, Backbone, ListView, EdgeDetailView, listTemplate, edgeTemplate) {
     var EdgeListView = Backbone.View.extend({
       initialize: function(options) {
-        this.router = options.router;
         this.template = listTemplate;
 
         this.listView = new ListView({
           childView: EdgeDetailView,
           template: edgeTemplate,
-          router: this.router,
           collection: options.collection
         });
 

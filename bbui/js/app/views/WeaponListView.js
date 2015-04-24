@@ -9,13 +9,11 @@ define(["jquery",
   function($, Backbone, ListView, WeaponDetailView, listTemplate, weaponTemplate) {
     var WeaponListView = Backbone.View.extend({
       initialize: function(options) {
-        this.router = options.router;
         this.template = listTemplate;
 
         this.listView = new ListView({
           childView: WeaponDetailView,
           template: weaponTemplate,
-          router: this.router,
           collection: options.collection
         });
 

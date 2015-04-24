@@ -9,13 +9,11 @@ define(["jquery",
   function($, Backbone, ListView, HindranceDetailView, listTemplate, hindranceTemplate) {
     var HindranceListView = Backbone.View.extend({
       initialize: function(options) {
-        this.router = options.router;
         this.template = listTemplate;
 
         this.listView = new ListView({
           childView: HindranceDetailView,
           template: hindranceTemplate,
-          router: this.router,
           collection: options.collection
         });
 

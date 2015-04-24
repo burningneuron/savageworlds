@@ -9,13 +9,11 @@ define(["jquery",
   function($, Backbone, ListView, SkillDetailView, listTemplate, skillTemplate) {
     var SkillListView = Backbone.View.extend({
       initialize: function(options) {
-        this.router = options.router;
         this.template = listTemplate;
 
         this.listView = new ListView({
           childView: SkillDetailView,
           template: skillTemplate,
-          router: this.router,
           collection: options.collection
         });
 

@@ -6,6 +6,7 @@ var _hl = require('highland');
 
 var validRequest = function(request, response) {
 	var character = null;
+	console.log(JSON.stringify("incoming data: " + request.body));
 	if (!request.body ||
 		_.isEmpty(request.body.name) ||
 		_.isEmpty(request.body.system)) {

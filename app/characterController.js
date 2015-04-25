@@ -17,7 +17,7 @@ var validRequest = function(request, response) {
 		response.status(400).send("Required: request.body.character = " + JSON.stringify(
 			sample));
 	} else {
-		character = new Character(request.body);
+		character = Character(request.body);
 		character.markModified('gameStuff');
 	}
 

@@ -65,8 +65,8 @@ define(["jquery",
 			// View Event Handlers
 			events: {
 				"change input.base": "updateModel",
-				"click #save": "save",
-				"click #saveAndClose": "saveAndClose",
+				"click a#save": "save",
+				"click a#saveAndClose": "saveAndClose",
 
 			},
 
@@ -108,7 +108,7 @@ define(["jquery",
 
 			saveAndClose: function() {
 				this.save();
-				this.router.navigate("", true);
+				this.router.navigate("characters", true);
 			},
 
 			// Renders the view's template to the UI

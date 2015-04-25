@@ -64,8 +64,9 @@ define(["jquery",
 
 			// View Event Handlers
 			events: {
-				"click #characterList": "gotoCharacterList",
-				"change input.base": "updateModel"
+				"change input.base": "updateModel",
+				"click #save": "save",
+				"click #saveAndClose": "saveAndClose",
 
 			},
 
@@ -94,16 +95,19 @@ define(["jquery",
 					"[name='toughness']").val());
 			},
 
-			gotoCharacterList: function() {
+			save: function() {
 				this.model.save({
 					success: function() {
 						console.log('model save successful');
 					}.bind(this),
 					failure: function() {
 						console.log('model save failed');
-						// this.router.navigate("", true);
 					}.bind(this)
 				});
+			},
+
+			saveAndClose: function() {
+				this.save();
 				this.router.navigate("", true);
 			},
 

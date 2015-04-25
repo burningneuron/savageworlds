@@ -31,12 +31,6 @@ define(["jquery",
 
 				// Tells Backbone to start watching for hashchange events
 				Backbone.history.start();
-
-				if (!this.user.facebook.token && !this.user.twitter.token && !this.user.google.token) {
-					this.navigate("", true);
-				} else {
-					this.navigate("characters", true);
-				}
 			},
 
 			// All of your Backbone Routes (add more)

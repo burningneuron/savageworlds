@@ -107,13 +107,15 @@ define(["jquery",
 			},
 
 			saveAndClose: function() {
+				var router = this.router;
 				this.model.save({
 					success: function() {
-						this.router.navigate("characters", true);
-					}.bind(this),
+						console.log('model save successful');
+						router.navigate("characters", true);
+					},
 					failure: function() {
 						console.log('model save failed');
-					}.bind(this)
+					}
 				});
 			},
 

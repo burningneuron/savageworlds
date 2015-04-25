@@ -93,13 +93,13 @@ define(["jquery",
         this.model.save({
           success: function() {
             console.log('model save successful');
-            this.router.navigate("", true);
           }.bind(this),
           failure: function() {
             console.log('model save failed');
-            this.router.navigate("", true);
+            // this.router.navigate("", true);
           }.bind(this)
         });
+        this.router.navigate("", true);
       },
 
       // Renders the view's template to the UI

@@ -17,9 +17,9 @@ define(["jquery", "backbone", "Backbone.DocumentModel"],
 			// Default values for all of the Model attributes
 			defaults: {
 				system: "Savage Worlds",
-				setting: "*none*",
+				setting: "NO SETTING",
 				player: "",
-				name: "Test Character",
+				name: "NO NAME",
 
 				gameStuff: {
 					race: "Human",
@@ -59,63 +59,12 @@ define(["jquery", "backbone", "Backbone.DocumentModel"],
 						x100: "",
 						x110: ""
 					},
-					skills: [{
-						name: "Shooting",
-						value: "d8"
-					}, {
-						name: "Knowledge (Security Systems)",
-						value: "d6"
-					}, {
-						name: "Notice",
-						value: "d10"
-					}],
-					equipment: [{
-						name: "Backpack",
-						weight: "2"
-					}, {
-						name: "Bedroll",
-						weight: "4"
-					}],
-					edges: [{
-						name: "Ace",
-						requirements: "N, A d8",
-						effect: "+2 to Boating, Driving, Piloting; may make Soak rolls for vehicle at –2"
-					}, {
-						name: "Quick",
-						requirements: "N",
-						effect: "Discard draw of 5 or less for new card"
-					}],
-					hindrances: [{
-						name: "Heroic",
-						type: "Major",
-						effect: "Character always helps those in need"
-					}, {
-						name: "Quirk",
-						type: "Minor",
-						effect: "Character has some minor but persistent foible"
-					}, {
-						name: "Cautious",
-						type: "Minor",
-						effect: "Character is overly careful"
-					}],
-					powers: [{
-						power_points: "2",
-						name: "Armor",
-						trappings: "Protection Spell",
-						effect: "2 Armor",
-						duration: "3 (1/round)",
-						notes: "4 Armor on a raise"
-					}],
-					weapons: [{
-						name: "Glock (9mm)",
-						range: "12/24/48",
-						damage: "2d6",
-						rof: "1",
-						weight: "3",
-						shots: "17",
-						min_str: "",
-						notes: "AP 1, Semi-Auto"
-					}]
+					skills: [],
+					equipment: [],
+					edges: [],
+					hindrances: [],
+					powers: [],
+					weapons: []
 				}
 			},
 

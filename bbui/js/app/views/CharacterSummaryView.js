@@ -12,7 +12,7 @@ define(["jquery",
 		var CharacterSummaryView = Backbone.Marionette.ItemView.extend({
 
 			// The DOM Element associated with this view
-
+			tagName: 'tr',
 			// View constructor
 			initialize: function(options) {
 				this.router = options.router;
@@ -29,8 +29,13 @@ define(["jquery",
 
 			// View Event Handlers
 			events: {
-				"click #character": "showCharacter"
+				'click #character': 'showCharacter',
+				'click a.character': 'deleteModel'
 			},
+
+			deleteModel: function() {
+        this.model.destroy();
+      },
 
 			showCharacter: function() {
 				this.router.navigate("character?id=" + this.model.get('_id'), true);
@@ -40,7 +45,7 @@ define(["jquery",
 			render: function() {
 
 				// flatten the user model so it plays well with the template code
-				this.$el.html(_.template(template, this.model.attributes));
+				this.$el.html(_.template(template, this.model.toJSON()));
 
 				// Maintains chainability
 				return this;

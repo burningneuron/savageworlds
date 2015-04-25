@@ -4,7 +4,7 @@ var isLoggedIn = function(req, res, next) {
     return next();
   }
 
-  res.redirect('/');
+  res.status(401).send({error: 'You must be logged in'});
 };
 
 var initialize = function(app, passport) {

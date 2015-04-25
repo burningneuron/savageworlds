@@ -37,8 +37,9 @@ define(["jquery",
 
 				// When there is no hash on the url, the home method is called
 				"": "index",
-				"character?id=:id": "character",
-				"profile": "profile"
+        "addCharacter": "addCharacter",
+        "character?id=:id": "character",
+				"profile": "profile",
 
 			},
 
@@ -70,6 +71,14 @@ define(["jquery",
 					router: this,
 					model: this.user
 				}));
+      },
+
+			addCharacter: function() {
+        var character = new CharacterModel();
+        this.showView(new CharacterDetailView({
+          router: this,
+          model: character
+        }));
 			},
 
 			character: function(id) {

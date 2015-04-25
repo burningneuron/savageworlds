@@ -46,7 +46,9 @@ var setCharacterDefaults = function(character) {
 };
 
 var getCharacters = function(req, res) {
-	_hl(Character.find({}))
+	_hl(Character.find({
+	  userId: req.user ? req.user.id : 0
+	}))
 		.flatten()
 		.map(setCharacterDefaults)
 		.toArray(function(characters) {

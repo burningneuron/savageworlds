@@ -9,11 +9,12 @@ define(["jquery",
 		"views/CharacterListView",
 		"views/LoginView",
 		"views/ProfileView",
+		"views/AboutView",
 		"Backbone.Marionette",
 	],
 
 	function($, Backbone, CharacterCollection, UserModel, CharacterModel,
-		CharacterDetailView, CharacterListView, LoginView, ProfileView, Marionette) {
+		CharacterDetailView, CharacterListView, LoginView, ProfileView, AboutView, Marionette) {
 
 		var DesktopRouter = Backbone.Router.extend({
 
@@ -30,6 +31,12 @@ define(["jquery",
 
 				// Tells Backbone to start watching for hashchange events
 				Backbone.history.start();
+
+				if (!this.user.facebook.token && !this.user.twitter.token && !this.user.google.token) {
+					this.navigate("", true);
+				} else {
+					this.navigate("characters", true);
+				}
 			},
 
 			// All of your Backbone Routes (add more)
@@ -38,6 +45,7 @@ define(["jquery",
 				// When there is no hash on the url, the home method is called
 				"": "index",
         "addCharacter": "addCharacter",
+				"characters": "listCharacters",
         "character?id=:id": "character",
 				"profile": "profile",
 
@@ -57,6 +65,12 @@ define(["jquery",
 			},
 
 			index: function() {
+				this.showView(new AboutView({
+					router: this
+				}));
+			},
+
+			listCharacters: function() {
 				var characters = new CharacterCollection();
 				characters.fetch();
 

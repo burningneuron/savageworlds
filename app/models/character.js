@@ -9,7 +9,7 @@ var CharacterSchema = new mongoose.Schema({
   player: String,
   name: String,
 
-  gameStuff: Schema.Types.Mixed
+  gameStuff: mongoose.Schema.Types.Mixed
 });
 
 // Export the Mongoose model

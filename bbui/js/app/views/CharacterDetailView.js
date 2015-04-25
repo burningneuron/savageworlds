@@ -96,7 +96,7 @@ define(["jquery",
 			},
 
 			save: function() {
-				this.model.save({
+				this.model.save(null, {
 					success: function() {
 						console.log('model save successful');
 					}.bind(this),
@@ -108,7 +108,7 @@ define(["jquery",
 
 			saveAndClose: function() {
 				var router = this.router;
-				this.model.save({
+				this.model.save(null, {
 					success: function() {
 						console.log('model save successful');
 						router.navigate("characters", true);

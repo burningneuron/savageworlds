@@ -6,17 +6,17 @@ var _hl = require('highland');
 
 var validRequest = function(request, response) {
 	var character = null;
-	if (!request.body.character ||
-		_.isEmpty(request.body.character.name) ||
-		_.isEmpty(request.body.character.system)) {
+	if (!request.body ||
+		_.isEmpty(request.body.name) ||
+		_.isEmpty(request.body.system)) {
 		var sample = {
 			name: "some name",
 			system: "some system"
 		};
-		res.status(400).send("Required: request.body.character = " + JSON.stringify(
+		response.status(400).send("Required: request.body.character = " + JSON.stringify(
 			sample));
 	} else {
-		character = request.body.character;
+		character = request.body;
 	}
 
 	return character;

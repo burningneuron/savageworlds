@@ -17,7 +17,8 @@ var validRequest = function(request, response) {
 		response.status(400).send("Required: request.body.character = " + JSON.stringify(
 			sample));
 	} else {
-		character = request.body;
+		character = new Character(request.body);
+		character.markModified('gameStuff');
 	}
 
 	return character;
@@ -91,7 +92,7 @@ var putCharacter = function(req, res) {
 							} else {
 								logger.info("Documents updated: " +
 									numberAffected +
-									"; Raw response from Mongo: " + raw);
+									"; Raw response from Mongo: " + JSON.stringify(raw));
 								res.json(putChar);
 							}
 						});

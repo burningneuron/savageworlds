@@ -107,8 +107,14 @@ define(["jquery",
 			},
 
 			saveAndClose: function() {
-				this.save();
-				this.router.navigate("characters", true);
+				this.model.save({
+					success: function() {
+						this.router.navigate("characters", true);
+					}.bind(this),
+					failure: function() {
+						console.log('model save failed');
+					}.bind(this)
+				});
 			},
 
 			// Renders the view's template to the UI

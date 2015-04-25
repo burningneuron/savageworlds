@@ -75,7 +75,7 @@ var putCharacter = function(req, res) {
 			_id: req.params.character_id
 		}, function(err, character) {
 			if (err) {
-				logger.err("Error on character find: " + err);
+				logger.error("Error on character find: " + err);
 				res.send(err);
 			} else {
 				if (character && character.userId === req.user.id) {
@@ -87,7 +87,7 @@ var putCharacter = function(req, res) {
 						}, putChar,
 						function(err, numberAffected, raw) {
 							if (err) {
-								logger.err("Error on character update: " + err);
+								logger.error("Error on character update: " + err);
 								res.send(err);
 							} else {
 								logger.info("Documents updated: " +
@@ -102,7 +102,7 @@ var putCharacter = function(req, res) {
 					delete putChar._id;
 					Character.create(putChar, function(err, character) {
 						if (err) {
-							logger.err("Error on character creation: " + err);
+							logger.error("Error on character creation: " + err);
 							res.send(err);
 						} else {
 							logger.info("Character added: " + character);
@@ -121,7 +121,7 @@ var deleteCharacter = function(req, res) {
 		userId: req.user.id
 	}, function(err) {
 		if (err) {
-			logger.err("Error on character delete: " + err);
+			logger.error("Error on character delete: " + err);
 			res.send(err);
 		} else {
 			logger.info("Character deleted: " + req.params.character_id);
@@ -136,7 +136,7 @@ var postCharacter = function(req, res) {
 		postChar.userId = req.user.id;
 		Character.create(postChar, function(err, character) {
 			if (err) {
-				logger.err("Error on character creation: " + err);
+				logger.error("Error on character creation: " + err);
 				res.send(err);
 			} else {
 				logger.info("Character added: " + character);

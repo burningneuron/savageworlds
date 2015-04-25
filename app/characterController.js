@@ -80,6 +80,7 @@ var putCharacter = function(req, res) {
 			} else {
 				if (character && character.userId === req.user.id) {
 					// user owns the character, so update it
+          character.markModified('gameStuff');
 					Character.update({
 							userId: req.user.id,
 							_id: req.params.character_id

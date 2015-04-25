@@ -80,23 +80,27 @@ var putCharacter = function(req, res) {
 			} else {
 				if (character && character.userId === req.user.id) {
 					// user owns the character, so update it
+          character.name = putChar.name;
+          character.gameStuff = putChar.gameStuff;
           character.markModified('gameStuff');
-					Character.update({
-							userId: req.user.id,
-							_id: req.params.character_id
-
-						}, putChar,
-						function(err, numberAffected, raw) {
-							if (err) {
-								logger.error("Error on character update: " + err);
-								res.send(err);
-							} else {
-								logger.info("Documents updated: " +
-									numberAffected +
-									"; Raw response from Mongo: " + JSON.stringify(raw));
-								res.json(putChar);
-							}
-						});
+          character.save();
+          res.json(character);
+					// Character.update({
+					// 		userId: req.user.id,
+					// 		_id: req.params.character_id
+          //
+					// 	}, character,
+					// 	function(err, numberAffected, raw) {
+					// 		if (err) {
+					// 			logger.error("Error on character update: " + err);
+					// 			res.send(err);
+					// 		} else {
+					// 			logger.info("Documents updated: " +
+					// 				numberAffected +
+					// 				"; Raw response from Mongo: " + JSON.stringify(raw));
+					// 			res.json(putChar);
+					// 		}
+					// 	});
 				} else {
 					// user does not own, create a copy
 					putChar.userId = req.user.id;

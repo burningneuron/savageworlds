@@ -33,10 +33,20 @@ define(["jquery",
 				"click #twitterbutton": "gotoProfile",
 				"click #googlebutton": "gotoProfile",
 
+				"click a.about": "gotoAbout",
+				"click a.characterList": "gotoCharacterList",
 			},
 
 			gotoProfile: function() {
 				this.router.navigate("profile", true);
+			},
+
+			gotoAbout: function() {
+				this.router.navigate("", true);
+			},
+
+			gotoCharacterList: function() {
+				this.router.navigate("characters", true);
 			},
 
 			// Renders the view's template to the UI

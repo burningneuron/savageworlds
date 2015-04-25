@@ -25,12 +25,6 @@ define(["jquery",
 
 			// View Event Handlers
 			events: {
-				"click #characterList": "gotoCharacterList",
-
-			},
-
-			gotoCharacterList: function() {
-				this.router.navigate("", true);
 			},
 
 			// Renders the view's template to the UI

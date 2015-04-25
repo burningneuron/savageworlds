@@ -39,14 +39,15 @@ define(["jquery",
         if (useModel) {
           this.subviews.push({
             view: new ViewConstructor({
-              model: this.model.get(property)
+              model: this.model.get("gameStuff." + property)
             }),
             anchor: "#" + property
           });
         } else {
           this.subviews.push({
             view: new ViewConstructor({
-              collection: this.model.get(property)
+              collection: this.model.get("gameStuff." +
+                property)
             }),
             anchor: "#" + property
           });
@@ -72,21 +73,25 @@ define(["jquery",
         this.model.set('setting', this.$("[name='setting']").val());
         this.model.set('player', this.$("[name='player']").val());
         this.model.set('name', this.$("[name='name']").val());
-        this.model.set('race', this.$("[name='race']").val());
-        this.model.set('rank', this.$("[name='rank']").val());
-        this.model.set('xp', this.$("[name='xp']").val());
-        this.model.set('money', this.$("[name='money']").val());
 
-        this.model.set('agility', this.$("[name='agility']").val());
-        this.model.set('smarts', this.$("[name='smarts']").val());
-        this.model.set('spirit', this.$("[name='spirit']").val());
-        this.model.set('strength', this.$("[name='strength']").val());
-        this.model.set('vigor', this.$("[name='vigor']").val());
+        this.model.set('gameStuff.race', this.$("[name='race']").val());
+        this.model.set('gameStuff.rank', this.$("[name='rank']").val());
+        this.model.set('gameStuff.xp', this.$("[name='xp']").val());
+        this.model.set('gameStuff.money', this.$("[name='money']").val());
 
-        this.model.set('charisma', this.$("[name='charisma']").val());
-        this.model.set('pace', this.$("[name='pace']").val());
-        this.model.set('parry', this.$("[name='parry']").val());
-        this.model.set('toughness', this.$("[name='toughness']").val());
+        this.model.set('gameStuff.agility', this.$("[name='agility']").val());
+        this.model.set('gameStuff.smarts', this.$("[name='smarts']").val());
+        this.model.set('gameStuff.spirit', this.$("[name='spirit']").val());
+        this.model.set('gameStuff.strength', this.$("[name='strength']")
+          .val());
+        this.model.set('gameStuff.vigor', this.$("[name='vigor']").val());
+
+        this.model.set('gameStuff.charisma', this.$("[name='charisma']")
+          .val());
+        this.model.set('gameStuff.pace', this.$("[name='pace']").val());
+        this.model.set('gameStuff.parry', this.$("[name='parry']").val());
+        this.model.set('gameStuff.toughness', this.$(
+          "[name='toughness']").val());
       },
 
       gotoCharacterList: function() {

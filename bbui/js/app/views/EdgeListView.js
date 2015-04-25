@@ -3,17 +3,13 @@ define(["jquery",
     "views/ListView",
     "views/EdgeDetailView",
     "text!templates/edgeListView.html",
-    "text!templates/edgeDetailView.html",
     "Backbone.Marionette"
   ],
-  function($, Backbone, ListView, EdgeDetailView, listTemplate, edgeTemplate) {
+  function($, Backbone, ListView, EdgeDetailView, template) {
     var EdgeListView = Backbone.View.extend({
       initialize: function(options) {
-        this.template = listTemplate;
-
         this.listView = new ListView({
           childView: EdgeDetailView,
-          template: edgeTemplate,
           collection: options.collection
         });
 
@@ -30,11 +26,14 @@ define(["jquery",
       },
 
       addEdge: function() {
-        this.listView.collection.add({name: "", effect:""});
+        this.listView.collection.add({
+          name: "",
+          effect: ""
+        });
       },
 
       render: function() {
-        this.$el.append(_.template(this.template, {}));
+        this.$el.append(_.template(template, {}));
         this.$("#edgeTable").append(this.listView.render().$el);
 
         return this;

@@ -1,9 +1,12 @@
-define(["jquery", "backbone", "Backbone.Marionette"],
-  function($, Backbone) {
+define(["jquery",
+    "backbone",
+    "text!templates/edgeDetailView.html",
+    "Backbone.Marionette"
+  ],
+  function($, Backbone, template) {
     var EdgeDetailView = Backbone.Marionette.ItemView.extend({
-      initialize: function(options) {
-        this.template = options.template;
-      },
+
+      initialize: function(options) {},
 
       close: function() {
         this.remove();
@@ -25,7 +28,7 @@ define(["jquery", "backbone", "Backbone.Marionette"],
       },
 
       render: function() {
-        this.$el.html(_.template(this.template, this.model.attributes));
+        this.$el.html(_.template(template, this.model.attributes));
         return this;
       }
     });

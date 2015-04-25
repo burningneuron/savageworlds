@@ -1,56 +1,52 @@
 define(["jquery",
-    "backbone",
-    "views/ListView",
-    "views/WeaponDetailView",
-    "text!templates/weaponListView.html",
-    "text!templates/weaponDetailView.html",
-    "Backbone.Marionette"
-  ],
-  function($, Backbone, ListView, WeaponDetailView, listTemplate, weaponTemplate) {
-    var WeaponListView = Backbone.View.extend({
-      initialize: function(options) {
-        this.template = listTemplate;
+		"backbone",
+		"views/ListView",
+		"views/WeaponDetailView",
+		"text!templates/weaponListView.html",
+		"Backbone.Marionette"
+	],
+	function($, Backbone, ListView, WeaponDetailView, template) {
+		var WeaponListView = Backbone.View.extend({
+			initialize: function(options) {
+				this.listView = new ListView({
+					childView: WeaponDetailView,
+					collection: options.collection
+				});
 
-        this.listView = new ListView({
-          childView: WeaponDetailView,
-          template: weaponTemplate,
-          collection: options.collection
-        });
+			},
 
-      },
+			close: function() {
+				this.listView.close();
+				this.remove();
+				this.unbind();
+			},
 
-      close: function() {
-        this.listView.close();
-        this.remove();
-        this.unbind();
-      },
+			events: {
+				'click a#addWeapon': 'addWeapon'
+			},
 
-      events: {
-        'click a#addWeapon': 'addWeapon'
-      },
+			addWeapon: function() {
+				this.listView.collection.add({
+					name: "",
+					range: "",
+					damage: "",
+					rof: "",
+					weight: "",
+					shots: "",
+					min_str: "",
+					notes: ""
+				});
+			},
 
-      addWeapon: function() {
-        this.listView.collection.add({
-          name: "",
-          range: "",
-          damage: "",
-          rof: "",
-          weight: "",
-          shots: "",
-          min_str: "",
-          notes: ""
-        });
-      },
+			render: function() {
+				this.$el.append(_.template(template, {}));
+				this.$("#weaponTable").append(this.listView.render().$el);
 
-      render: function() {
-        this.$el.append(_.template(this.template, {}));
-        this.$("#weaponTable").append(this.listView.render().$el);
+				return this;
+			}
+		});
 
-        return this;
-      }
-    });
-
-    // Returns the View class
-    return WeaponListView;
-  }
+		// Returns the View class
+		return WeaponListView;
+	}
 );

@@ -1,41 +1,43 @@
-define(["jquery", "backbone", "Backbone.Marionette"],
-  function($, Backbone) {
-    var PowerDetailView = Backbone.Marionette.ItemView.extend({
+define(["jquery",
+		"backbone",
+		"text!templates/powerDetailView.html",
+		"Backbone.Marionette"
+	],
+	function($, Backbone, template) {
+		var PowerDetailView = Backbone.Marionette.ItemView.extend({
 
-      initialize: function(options) {
-        this.template = options.template;
-      },
+			initialize: function(options) {},
 
-      close: function() {
-        this.remove();
-        this.unbind();
-      },
+			close: function() {
+				this.remove();
+				this.unbind();
+			},
 
-      events: {
-        'change input.power': 'updateModel',
-        'click a.power': 'deleteModel'
-      },
+			events: {
+				'change input.power': 'updateModel',
+				'click a.power': 'deleteModel'
+			},
 
-      deleteModel: function() {
-        this.model.destroy();
-      },
+			deleteModel: function() {
+				this.model.destroy();
+			},
 
-      updateModel: function() {
-        this.model.set('power_points', this.$("[name='power_points']").val());
-        this.model.set('name', this.$("[name='name']").val());
-        this.model.set('trappings', this.$("[name='trappings']").val());
-        this.model.set('effect', this.$("[name='effect']").val());
-        this.model.set('duration', this.$("[name='duration']").val());
-        this.model.set('notes', this.$("[name='notes']").val());
-      },
+			updateModel: function() {
+				this.model.set('power_points', this.$("[name='power_points']").val());
+				this.model.set('name', this.$("[name='name']").val());
+				this.model.set('trappings', this.$("[name='trappings']").val());
+				this.model.set('effect', this.$("[name='effect']").val());
+				this.model.set('duration', this.$("[name='duration']").val());
+				this.model.set('notes', this.$("[name='notes']").val());
+			},
 
-      render: function() {
-        this.$el.html(_.template(this.template, this.model.attributes));
-        return this;
-      }
-    });
+			render: function() {
+				this.$el.html(_.template(template, this.model.attributes));
+				return this;
+			}
+		});
 
-    // Returns the View class
-    return PowerDetailView;
-  }
+		// Returns the View class
+		return PowerDetailView;
+	}
 );

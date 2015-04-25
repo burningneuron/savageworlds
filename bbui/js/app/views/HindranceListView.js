@@ -1,47 +1,46 @@
 define(["jquery",
-    "backbone",
-    "views/ListView",
-    "views/HindranceDetailView",
-    "text!templates/hindranceListView.html",
-    "text!templates/hindranceDetailView.html",
-    "Backbone.Marionette"
-  ],
-  function($, Backbone, ListView, HindranceDetailView, listTemplate, hindranceTemplate) {
-    var HindranceListView = Backbone.View.extend({
-      initialize: function(options) {
-        this.template = listTemplate;
+		"backbone",
+		"views/ListView",
+		"views/HindranceDetailView",
+		"text!templates/hindranceListView.html",
+		"Backbone.Marionette"
+	],
+	function($, Backbone, ListView, HindranceDetailView, template) {
+		var HindranceListView = Backbone.View.extend({
+			initialize: function(options) {
+				this.listView = new ListView({
+					childView: HindranceDetailView,
+					collection: options.collection
+				});
 
-        this.listView = new ListView({
-          childView: HindranceDetailView,
-          template: hindranceTemplate,
-          collection: options.collection
-        });
+			},
 
-      },
+			close: function() {
+				this.listView.close();
+				this.remove();
+				this.unbind();
+			},
 
-      close: function() {
-        this.listView.close();
-        this.remove();
-        this.unbind();
-      },
+			events: {
+				'click a#addHindrance': 'addHindrance'
+			},
 
-      events: {
-        'click a#addHindrance': 'addHindrance'
-      },
+			addHindrance: function() {
+				this.listView.collection.add({
+					name: "",
+					effect: ""
+				});
+			},
 
-      addHindrance: function() {
-        this.listView.collection.add({name: "", effect:""});
-      },
+			render: function() {
+				this.$el.append(_.template(template, {}));
+				this.$("#hindranceTable").append(this.listView.render().$el);
 
-      render: function() {
-        this.$el.append(_.template(this.template, {}));
-        this.$("#hindranceTable").append(this.listView.render().$el);
+				return this;
+			}
+		});
 
-        return this;
-      }
-    });
-
-    // Returns the View class
-    return HindranceListView;
-  }
+		// Returns the View class
+		return HindranceListView;
+	}
 );

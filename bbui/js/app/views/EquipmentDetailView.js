@@ -1,36 +1,38 @@
-define(["jquery", "backbone", "Backbone.Marionette"],
-  function($, Backbone) {
-    var EquipmentDetailView = Backbone.Marionette.ItemView.extend({
-      initialize: function(options) {
-        this.template = options.template;
-      },
+define(["jquery",
+		"backbone",
+		"text!templates/equipmentDetailView.html",
+		"Backbone.Marionette"
+	],
+	function($, Backbone, template) {
+		var EquipmentDetailView = Backbone.Marionette.ItemView.extend({
+			initialize: function(options) {},
 
-      close: function() {
-        this.remove();
-        this.unbind();
-      },
+			close: function() {
+				this.remove();
+				this.unbind();
+			},
 
-      events: {
-        'change input.equipment': 'updateModel',
-        'click a.equipment': 'deleteModel'
-      },
+			events: {
+				'change input.equipment': 'updateModel',
+				'click a.equipment': 'deleteModel'
+			},
 
-      deleteModel: function() {
-        this.model.destroy();
-      },
+			deleteModel: function() {
+				this.model.destroy();
+			},
 
-      updateModel: function() {
-        this.model.set('name', this.$("[name='name']").val());
-        this.model.set('weight', this.$("[name='weight']").val());
-      },
+			updateModel: function() {
+				this.model.set('name', this.$("[name='name']").val());
+				this.model.set('weight', this.$("[name='weight']").val());
+			},
 
-      render: function() {
-        this.$el.html(_.template(this.template, this.model.attributes));
-        return this;
-      }
-    });
+			render: function() {
+				this.$el.html(_.template(template, this.model.attributes));
+				return this;
+			}
+		});
 
-    // Returns the View class
-    return EquipmentDetailView;
-  }
+		// Returns the View class
+		return EquipmentDetailView;
+	}
 );

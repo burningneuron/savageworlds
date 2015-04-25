@@ -1,36 +1,38 @@
-define(["jquery", "backbone", "Backbone.Marionette"],
-  function($, Backbone) {
-    var HindranceDetailView = Backbone.Marionette.ItemView.extend({
-      initialize: function(options) {
-        this.template = options.template;
-      },
+define(["jquery",
+		"backbone",
+		"text!templates/hindranceDetailView.html",
+		"Backbone.Marionette"
+	],
+	function($, Backbone, template) {
+		var HindranceDetailView = Backbone.Marionette.ItemView.extend({
+			initialize: function(options) {},
 
-      close: function() {
-        this.remove();
-        this.unbind();
-      },
+			close: function() {
+				this.remove();
+				this.unbind();
+			},
 
-      events: {
-        'change input.hindrance': 'updateModel',
-        'click a.hindrance': 'deleteModel'
-      },
+			events: {
+				'change input.hindrance': 'updateModel',
+				'click a.hindrance': 'deleteModel'
+			},
 
-      deleteModel: function() {
-        this.model.destroy();
-      },
+			deleteModel: function() {
+				this.model.destroy();
+			},
 
-      updateModel: function(d) {
-        this.model.set('name', this.$("[name='name']").val());
-        this.model.set('effect', this.$("[name='effect']").val());
-      },
+			updateModel: function(d) {
+				this.model.set('name', this.$("[name='name']").val());
+				this.model.set('effect', this.$("[name='effect']").val());
+			},
 
-      render: function() {
-        this.$el.html(_.template(this.template, this.model.attributes));
-        return this;
-      }
-    });
+			render: function() {
+				this.$el.html(_.template(template, this.model.attributes));
+				return this;
+			}
+		});
 
-    // Returns the View class
-    return HindranceDetailView;
-  }
+		// Returns the View class
+		return HindranceDetailView;
+	}
 );

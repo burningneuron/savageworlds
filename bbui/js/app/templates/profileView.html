@@ -7,12 +7,12 @@
 
             <!-- check if the user has this token (is the user authenticated with this social account) -->
                 <p>
-                    <strong>id</strong>: <span style="word-break:break-all;"><%= facebook_id %></span><br/>
-                    <strong>token</strong>: <span style="word-break:break-all;"><%= facebook_token %></span><br/>
-                    <strong>email</strong>: <span style="word-break:break-all;"><%= facebook_email %></span><br/>
-                    <strong>name</strong>: <span style="word-break:break-all;"><%= facebook_name %></span>
+                    <strong>id</strong>: <span style="word-break:break-all;"><%= facebook.id %></span><br/>
+                    <strong>token</strong>: <span style="word-break:break-all;"><%= facebook.token %></span><br/>
+                    <strong>email</strong>: <span style="word-break:break-all;"><%= facebook.email %></span><br/>
+                    <strong>name</strong>: <span style="word-break:break-all;"><%= facebook.name %></span>
                 </p>
-                <% if (facebook_token) { %>
+                <% if (facebook.token) { %>
                   <a href="/unlink/facebook" class="btn btn-primary" id="facebook.control">Unlink Facebook</a>
                 <% } else { %>
                   <a href="/connect/facebook" class="btn btn-primary" id="facebook.control">Connect Facebook</a>
@@ -26,13 +26,13 @@
             <h3 class="text-info"><span class="fa fa-twitter"></span> Twitter</h3>
 
                 <p>
-                    <strong>id</strong>: <span style="word-break:break-all;"><%= twitter_id %></span><br/>
-                    <strong>token</strong>: <span style="word-break:break-all;"><%= twitter_token %></span><br/>
-                    <strong>display name</strong>: <span style="word-break:break-all;"><%= twitter_displayName %></span><br/>
-                    <strong>username</strong>: <span style="word-break:break-all;"><%= twitter_username %></span>
+                    <strong>id</strong>: <span style="word-break:break-all;"><%= twitter.id %></span><br/>
+                    <strong>token</strong>: <span style="word-break:break-all;"><%= twitter.token %></span><br/>
+                    <strong>display name</strong>: <span style="word-break:break-all;"><%= twitter.displayName %></span><br/>
+                    <strong>username</strong>: <span style="word-break:break-all;"><%= twitter.username %></span>
                 </p>
 
-                <% if (twitter_token) { %>
+                <% if (twitter.token) { %>
                   <a href="/unlink/twitter" class="btn btn-info" id="twitter.control">Unlink Twitter</a>
                 <% } else { %>
                   <a href="/connect/twitter" class="btn btn-info" id="twitter.control">Connect Twitter</a>
@@ -47,13 +47,13 @@
             <h3 class="text-danger"><span class="fa fa-google-plus"></span> Google+</h3>
 
                 <p>
-                    <strong>id</strong>: <span style="word-break:break-all;"><%= google_id %></span><br/>
-                    <strong>token</strong>: <span style="word-break:break-all;"><%= google_token %></span><br/>
-                    <strong>email</strong>: <span style="word-break:break-all;"><%= google_email %></span><br/>
-                    <strong>name</strong>: <span style="word-break:break-all;"><%= google_name %></span>
+                    <strong>id</strong>: <span style="word-break:break-all;"><%= google.id %></span><br/>
+                    <strong>token</strong>: <span style="word-break:break-all;"><%= google.token %></span><br/>
+                    <strong>email</strong>: <span style="word-break:break-all;"><%= google.email %></span><br/>
+                    <strong>name</strong>: <span style="word-break:break-all;"><%= google.name %></span>
                 </p>
 
-                <% if (google_token) { %>
+                <% if (google.token) { %>
                   <a href="/unlink/google" class="btn btn-danger" id="google.control">Unlink Google</a>
                 <% } else { %>
                   <a href="/connect/google" class="btn btn-danger" id="google.control">Connect Google</a>

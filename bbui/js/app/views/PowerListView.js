@@ -1,54 +1,50 @@
 define(["jquery",
-    "backbone",
-    "views/ListView",
-    "views/PowerDetailView",
-    "text!templates/powerListView.html",
-    "text!templates/powerDetailView.html",
-    "Backbone.Marionette"
-  ],
-  function($, Backbone, ListView, PowerDetailView, listTemplate, powerTemplate) {
-    var PowerListView = Backbone.View.extend({
-      initialize: function(options) {
-        this.template = listTemplate;
+		"backbone",
+		"views/ListView",
+		"views/PowerDetailView",
+		"text!templates/powerListView.html",
+		"Backbone.Marionette"
+	],
+	function($, Backbone, ListView, PowerDetailView, template) {
+		var PowerListView = Backbone.View.extend({
+			initialize: function(options) {
+				this.listView = new ListView({
+					childView: PowerDetailView,
+					collection: options.collection
+				});
 
-        this.listView = new ListView({
-          childView: PowerDetailView,
-          template: powerTemplate,
-          collection: options.collection
-        });
+			},
 
-      },
+			close: function() {
+				this.listView.close();
+				this.remove();
+				this.unbind();
+			},
 
-      close: function() {
-        this.listView.close();
-        this.remove();
-        this.unbind();
-      },
+			events: {
+				'click a#addPower': 'addPower'
+			},
 
-      events: {
-        'click a#addPower': 'addPower'
-      },
+			addPower: function() {
+				this.listView.collection.add({
+					power_points: "",
+					name: "",
+					trappings: "",
+					effect: "",
+					duration: "",
+					notes: ""
+				});
+			},
 
-      addPower: function() {
-        this.listView.collection.add({
-          power_points: "",
-          name: "",
-          trappings: "",
-          effect: "",
-          duration: "",
-          notes: ""
-        });
-      },
+			render: function() {
+				this.$el.append(_.template(template, {}));
+				this.$("#powerTable").append(this.listView.render().$el);
 
-      render: function() {
-        this.$el.append(_.template(this.template, {}));
-        this.$("#powerTable").append(this.listView.render().$el);
+				return this;
+			}
+		});
 
-        return this;
-      }
-    });
-
-    // Returns the View class
-    return PowerListView;
-  }
+		// Returns the View class
+		return PowerListView;
+	}
 );

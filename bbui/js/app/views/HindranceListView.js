@@ -12,7 +12,6 @@ define(["jquery",
 					childView: HindranceDetailView,
 					collection: options.collection
 				});
-
 			},
 
 			close: function() {
@@ -35,7 +34,6 @@ define(["jquery",
 			render: function() {
 				this.$el.append(_.template(template, {}));
 				this.$("#hindranceTable").append(this.listView.render().$el);
-
 				return this;
 			}
 		});

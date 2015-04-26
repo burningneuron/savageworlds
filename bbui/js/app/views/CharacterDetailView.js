@@ -15,8 +15,7 @@ define(["jquery",
 
 	function($, Backbone, Character, template,
 		SkillListView, EdgeListView, HindranceListView, WeaponListView,
-		PowerListView,
-		EquipmentListView, AdvancementView) {
+		PowerListView, EquipmentListView, AdvancementView) {
 
 		var View = Backbone.View.extend({
 			// View constructor
@@ -67,7 +66,6 @@ define(["jquery",
 				"change input.base": "updateModel",
 				"click a#save": "save",
 				"click a#saveAndClose": "saveAndClose",
-
 			},
 
 			updateModel: function() {

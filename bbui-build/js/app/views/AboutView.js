@@ -1,0 +1,1 @@
+define(["jquery","backbone","text!templates/aboutView.html"],function(e,t,n){var r=t.View.extend({initialize:function(e){},close:function(){this.remove(),this.unbind()},events:{},render:function(){return this.$el.html(_.template(n,{})),this}});return r});

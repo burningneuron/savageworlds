@@ -1,0 +1,1 @@
+({appDir:"../../",baseUrl:"js/app",dir:"../../../bbui-build",modules:[{name:"main"}],removeCombined:!0,skipModuleInsertion:!0});

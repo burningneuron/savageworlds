@@ -1,0 +1,1 @@
+require(["jquery","backbone","routers/DesktopRouter","jqueryui","bootstrap","backbone.validateAll"],function(e,t,n){new n});

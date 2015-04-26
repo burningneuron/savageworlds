@@ -1,0 +1,1 @@
+require(["jquery","backbone","routers/MobileRouter","jquerymobile","backbone.validateAll"],function(e,t,n){e.mobile.linkBindingEnabled=!1,e.mobile.hashListeningEnabled=!1,new n});

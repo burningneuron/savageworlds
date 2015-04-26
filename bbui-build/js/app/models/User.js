@@ -1,0 +1,1 @@
+define(["jquery","backbone","Backbone.DocumentModel"],function(e,t){var n=t.DocumentModel.extend({idAttribute:"_id",urlRoot:"/api/user",initialize:function(){this.on("change:twitter.* change:facebook.* change:google.*",function(){this.trigger("change")}.bind(this))},defaults:{facebook:{},twitter:{},google:{}},validate:function(e){}});return n});

@@ -1,0 +1,1 @@
+define(["jquery","backbone","models/Character","Backbone.DocumentModel"],function(e,t,n){var r=t.DocumentCollection.extend({url:"/api/character",model:n});return r});

@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({
   // extended: true
 }));
 
-app.use(express.static('bbui'));
+app.use(express.static(process.env.STATIC_FILES || "bbui"));
 
 // required for passport
 app.use(session({
@@ -60,4 +60,5 @@ app.post('/api/character', authRouter.isLoggedIn, charController.postCharacter);
 
 // launch ======================================================================
 app.listen(port);
+console.log('Serving files from ' + process.env.STATIC_FILES);
 console.log('The magic happens on port ' + port);

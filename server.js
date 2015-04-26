@@ -9,12 +9,14 @@ var port = process.env.PORT || 5000;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash = require('connect-flash');
+var _ = require('lodash');
 
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
+var logger = require('./common/logger');
 var configDB = require('./config/database.js');
 
 var authRouter = require('./app/auth_routes.js');
@@ -33,7 +35,8 @@ app.use(bodyParser.urlencoded({
   // extended: true
 }));
 
-app.use(express.static(process.env.STATIC_FILES || "bbui"));
+var staticFilePath = _.isUndefined(process.env.STATIC_FILES) ? "bbui" : process.env.STATIC_FILES;
+app.use(express.static(staticFilePath));
 
 // required for passport
 app.use(session({
@@ -60,5 +63,5 @@ app.post('/api/character', authRouter.isLoggedIn, charController.postCharacter);
 
 // launch ======================================================================
 app.listen(port);
-console.log('Serving files from ' + process.env.STATIC_FILES);
+console.log('Serving files from ' + staticFilePath);
 console.log('The magic happens on port ' + port);

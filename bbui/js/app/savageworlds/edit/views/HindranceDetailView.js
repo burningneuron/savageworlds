@@ -1,11 +1,13 @@
 define(["jquery",
 		"backbone",
-		"text!templates/equipmentDetailView.html",
+		"text!savageworlds/edit/templates/hindranceDetailView.html",
 		"Backbone.Marionette"
 	],
 	function($, Backbone, template) {
-		var EquipmentDetailView = Backbone.Marionette.ItemView.extend({
-			initialize: function(options) {},
+		var HindranceDetailView = Backbone.Marionette.ItemView.extend({
+			initialize: function(options) {
+				this.listenTo(this.model, 'change', this.render);
+			},
 
 			close: function() {
 				this.remove();
@@ -13,17 +15,17 @@ define(["jquery",
 			},
 
 			events: {
-				'change input.equipment': 'updateModel',
-				'click a.equipment': 'deleteModel'
+				'change input.hindrance': 'updateModel',
+				'click a.hindrance': 'deleteModel'
 			},
 
 			deleteModel: function() {
 				this.model.destroy();
 			},
 
-			updateModel: function() {
+			updateModel: function(d) {
 				this.model.set('name', this.$("[name='name']").val());
-				this.model.set('weight', this.$("[name='weight']").val());
+				this.model.set('effect', this.$("[name='effect']").val());
 			},
 
 			render: function() {
@@ -33,6 +35,6 @@ define(["jquery",
 		});
 
 		// Returns the View class
-		return EquipmentDetailView;
+		return HindranceDetailView;
 	}
 );

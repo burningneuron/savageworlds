@@ -2,15 +2,15 @@
 // -------
 define(["jquery",
 		"backbone",
-		"models/Character",
-		"text!templates/characterDetailView.html",
-		"views/SkillListView",
-		"views/EdgeListView",
-		"views/HindranceListView",
-		"views/WeaponListView",
-		"views/PowerListView",
-		"views/EquipmentListView",
-		"views/AdvancementView"
+		"savageworlds/models/Character",
+		"text!savageworlds/edit/templates/characterDetailView.html",
+		"savageworlds/edit/views/SkillListView",
+		"savageworlds/edit/views/EdgeListView",
+		"savageworlds/edit/views/HindranceListView",
+		"savageworlds/edit/views/WeaponListView",
+		"savageworlds/edit/views/PowerListView",
+		"savageworlds/edit/views/EquipmentListView",
+		"savageworlds/edit/views/AdvancementView"
 	],
 
 	function($, Backbone, Character, template,

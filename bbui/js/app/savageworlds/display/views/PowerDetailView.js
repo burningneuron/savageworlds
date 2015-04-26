@@ -1,6 +1,6 @@
 define(["jquery",
 		"backbone",
-		"text!templates/powerDetailView.html",
+		"text!savageworlds/display/templates/powerDetailView.html",
 		"Backbone.Marionette"
 	],
 	function($, Backbone, template) {

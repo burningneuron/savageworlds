@@ -1,6 +1,6 @@
 define(["jquery",
     "backbone",
-    "text!templates/edgeDetailView.html",
+    "text!savageworlds/display/templates/edgeDetailView.html",
     "Backbone.Marionette"
   ],
   function($, Backbone, template) {

@@ -5,16 +5,19 @@ define(["jquery",
 		"collections/CharacterCollection",
 		"models/User",
 		"models/Character",
-		"views/CharacterDetailView",
 		"views/CharacterListView",
 		"views/LoginView",
 		"views/ProfileView",
 		"views/AboutView",
 		"Backbone.Marionette",
+		"savageworlds/models/Character",
+		"savageworlds/display/views/CharacterDetailView",
+		"savageworlds/edit/views/CharacterDetailView",
 	],
 
-	function($, Backbone, CharacterCollection, UserModel, CharacterModel,
-		CharacterDetailView, CharacterListView, LoginView, ProfileView, AboutView, Marionette) {
+	function($, Backbone, CharacterCollection, UserModel, CharacterModel, CharacterListView,
+		LoginView, ProfileView, AboutView, Marionette, SavageWorldsCharacterModel,
+			SavageWorldsCharacterDisplay, SavageWorldsCharacterEditor) {
 
 		var DesktopRouter = Backbone.Router.extend({
 
@@ -82,23 +85,23 @@ define(["jquery",
       },
 
 			addCharacter: function() {
-        var character = new CharacterModel();
+        var character = new SavageWorldsCharacterModel();
 				// seems necessary to ensure defaults are fully constructed when view is created
 				character.set(CharacterModel.defaults);
 
-        this.showView(new CharacterDetailView({
+        this.showView(new SavageWorldsCharacterEditor({
           router: this,
           model: character
         }));
 			},
 
 			character: function(id) {
-				var character = new CharacterModel({
+				var character = new SavageWorldsCharacterModel({
 					_id: id
 				});
 				character.fetch({
 					success: function(model, response, callback) {
-						this.showView(new CharacterDetailView({
+						this.showView(new SavageWorldsCharacterEditor({
 							router: this,
 							model: model
 						}));

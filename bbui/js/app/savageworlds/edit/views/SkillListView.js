@@ -1,8 +1,8 @@
 define(["jquery",
 		"backbone",
 		"views/ListView",
-		"views/SkillDetailView",
-		"text!templates/skillListView.html",
+		"savageworlds/edit/views/SkillDetailView",
+		"text!savageworlds/edit/templates/skillListView.html",
 		"Backbone.Marionette"
 	],
 	function($, Backbone, ListView, SkillDetailView, template) {

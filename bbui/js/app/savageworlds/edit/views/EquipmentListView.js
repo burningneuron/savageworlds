@@ -1,17 +1,18 @@
 define(["jquery",
 		"backbone",
 		"views/ListView",
-		"views/HindranceDetailView",
-		"text!templates/hindranceListView.html",
+		"savageworlds/edit/views/EquipmentDetailView",
+		"text!savageworlds/edit/templates/equipmentListView.html",
 		"Backbone.Marionette"
 	],
-	function($, Backbone, ListView, HindranceDetailView, template) {
-		var HindranceListView = Backbone.View.extend({
+	function($, Backbone, ListView, EquipmentDetailView, template) {
+		var EquipmentListView = Backbone.View.extend({
 			initialize: function(options) {
 				this.listView = new ListView({
-					childView: HindranceDetailView,
+					childView: EquipmentDetailView,
 					collection: options.collection
 				});
+
 			},
 
 			close: function() {
@@ -21,24 +22,25 @@ define(["jquery",
 			},
 
 			events: {
-				'click a#addHindrance': 'addHindrance'
+				'click a#addEquipment': 'addEquipment'
 			},
 
-			addHindrance: function() {
+			addEquipment: function() {
 				this.listView.collection.add({
 					name: "",
-					effect: ""
+					weight: ""
 				});
 			},
 
 			render: function() {
 				this.$el.append(_.template(template, {}));
-				this.$("#hindranceTable").append(this.listView.render().$el);
+				this.$("#equipmentTable").append(this.listView.render().$el);
+
 				return this;
 			}
 		});
 
 		// Returns the View class
-		return HindranceListView;
+		return EquipmentListView;
 	}
 );

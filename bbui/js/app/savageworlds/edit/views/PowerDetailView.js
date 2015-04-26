@@ -1,10 +1,10 @@
 define(["jquery",
 		"backbone",
-		"text!templates/weaponDetailView.html",
+		"text!savageworlds/edit/templates/powerDetailView.html",
 		"Backbone.Marionette"
 	],
 	function($, Backbone, template) {
-		var WeaponDetailView = Backbone.Marionette.ItemView.extend({
+		var PowerDetailView = Backbone.Marionette.ItemView.extend({
 
 			initialize: function(options) {},
 
@@ -14,8 +14,8 @@ define(["jquery",
 			},
 
 			events: {
-				'change input.weapon': 'updateModel',
-				'click a.weapon': 'deleteModel'
+				'change input.power': 'updateModel',
+				'click a.power': 'deleteModel'
 			},
 
 			deleteModel: function() {
@@ -23,13 +23,11 @@ define(["jquery",
 			},
 
 			updateModel: function() {
+				this.model.set('power_points', this.$("[name='power_points']").val());
 				this.model.set('name', this.$("[name='name']").val());
-				this.model.set('range', this.$("[name='range']").val());
-				this.model.set('damage', this.$("[name='damage']").val());
-				this.model.set('rof', this.$("[name='rof']").val());
-				this.model.set('weight', this.$("[name='weight']").val());
-				this.model.set('shots', this.$("[name='shots']").val());
-				this.model.set('min_str', this.$("[name='min_str']").val());
+				this.model.set('trappings', this.$("[name='trappings']").val());
+				this.model.set('effect', this.$("[name='effect']").val());
+				this.model.set('duration', this.$("[name='duration']").val());
 				this.model.set('notes', this.$("[name='notes']").val());
 			},
 
@@ -40,6 +38,6 @@ define(["jquery",
 		});
 
 		// Returns the View class
-		return WeaponDetailView;
+		return PowerDetailView;
 	}
 );

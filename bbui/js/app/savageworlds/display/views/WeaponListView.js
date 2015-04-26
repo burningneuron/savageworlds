@@ -1,15 +1,15 @@
 define(["jquery",
 		"backbone",
 		"views/ListView",
-		"views/PowerDetailView",
-		"text!templates/powerListView.html",
+		"savageworlds/display/views/WeaponDetailView",
+		"text!savageworlds/display/templates/weaponListView.html",
 		"Backbone.Marionette"
 	],
-	function($, Backbone, ListView, PowerDetailView, template) {
-		var PowerListView = Backbone.View.extend({
+	function($, Backbone, ListView, WeaponDetailView, template) {
+		var WeaponListView = Backbone.View.extend({
 			initialize: function(options) {
 				this.listView = new ListView({
-					childView: PowerDetailView,
+					childView: WeaponDetailView,
 					collection: options.collection
 				});
 
@@ -22,29 +22,31 @@ define(["jquery",
 			},
 
 			events: {
-				'click a#addPower': 'addPower'
+				'click a#addWeapon': 'addWeapon'
 			},
 
-			addPower: function() {
+			addWeapon: function() {
 				this.listView.collection.add({
-					power_points: "",
 					name: "",
-					trappings: "",
-					effect: "",
-					duration: "",
+					range: "",
+					damage: "",
+					rof: "",
+					weight: "",
+					shots: "",
+					min_str: "",
 					notes: ""
 				});
 			},
 
 			render: function() {
 				this.$el.append(_.template(template, {}));
-				this.$("#powerTable").append(this.listView.render().$el);
+				this.$("#weaponTable").append(this.listView.render().$el);
 
 				return this;
 			}
 		});
 
 		// Returns the View class
-		return PowerListView;
+		return WeaponListView;
 	}
 );

@@ -1,6 +1,6 @@
 define(["jquery",
     "backbone",
-    "text!templates/advancementView.html"
+    "text!savageworlds/edit/templates/advancementView.html"
   ],
   function($, Backbone, template) {
     var AdvancementView = Backbone.View.extend({

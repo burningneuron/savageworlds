@@ -83,6 +83,9 @@ define(["jquery",
 
 			addCharacter: function() {
         var character = new CharacterModel();
+				// seems necessary to ensure defaults are fully constructed when view is created
+				character.set(CharacterModel.defaults);
+
         this.showView(new CharacterDetailView({
           router: this,
           model: character

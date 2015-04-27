@@ -38,7 +38,7 @@ define(["jquery",
       },
 
 			showCharacter: function() {
-				this.router.navigate("character?id=" + this.model.get('_id'), true);
+				this.router.navigate("showCharacter?id=" + this.model.get('_id'), true);
 			},
 
 			// Renders the view's template to the UI

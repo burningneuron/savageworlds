@@ -66,6 +66,20 @@ define(["jquery",
 				"change input.base": "updateModel",
 				"click a#save": "save",
 				"click a#saveAndClose": "saveAndClose",
+				"click a#displayMode": "displayMode",
+			},
+
+			displayMode: function() {
+				var router = this.router;
+				this.model.save(null, {
+					success: function() {
+						console.log('model save successful');
+						router.navigate("showCharacter?id=" + this.model.get('_id'), true);
+					},
+					failure: function() {
+						console.log('model save failed');
+					}
+				});
 			},
 
 			updateModel: function() {

@@ -43,7 +43,8 @@ define(["jquery",
 				"": "index",
         "addCharacter": "addCharacter",
 				"characters": "listCharacters",
-        "character?id=:id": "character",
+				"editCharacter?id=:id": "editCharacter",
+				"showCharacter?id=:id": "showCharacter",
 				"profile": "profile",
 
 			},
@@ -95,7 +96,7 @@ define(["jquery",
         }));
 			},
 
-			character: function(id) {
+			editCharacter: function(id) {
 				var character = new SavageWorldsCharacterModel({
 					_id: id
 				});
@@ -107,9 +108,21 @@ define(["jquery",
 						}));
 					}.bind(this)
 				});
+			},
 
+			showCharacter: function(id) {
+				var character = new SavageWorldsCharacterModel({
+					_id: id
+				});
+				character.fetch({
+					success: function(model, response, callback) {
+						this.showView(new SavageWorldsCharacterDisplay({
+							router: this,
+							model: model
+						}));
+					}.bind(this)
+				});
 			}
-
 		});
 
 		// Returns the DesktopRouter class

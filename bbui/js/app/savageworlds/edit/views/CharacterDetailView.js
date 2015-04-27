@@ -71,10 +71,11 @@ define(["jquery",
 
 			displayMode: function() {
 				var router = this.router;
+				var model = this.model;
 				this.model.save(null, {
 					success: function() {
 						console.log('model save successful');
-						router.navigate("showCharacter?id=" + this.model.get('_id'), true);
+						router.navigate("showCharacter?id=" + model.get('_id'), true);
 					},
 					failure: function() {
 						console.log('model save failed');

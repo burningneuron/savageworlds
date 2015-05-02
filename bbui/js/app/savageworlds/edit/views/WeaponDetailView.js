@@ -6,7 +6,9 @@ define(["jquery",
 	function($, Backbone, template) {
 		var WeaponDetailView = Backbone.Marionette.ItemView.extend({
 
-			initialize: function(options) {},
+			initialize: function(options) {
+				this.tagName = 'div';
+			},
 
 			close: function() {
 				this.remove();

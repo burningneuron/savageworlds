@@ -1,3 +1,51 @@
+<div class="row">
+  <div class="col-xs-2 text-right">
+    <div class="text-center">
+      <strong>Novice</strong>
+    </div>
+    <span><strong>0</strong>: <input type="text" class="input-sm invisible advancement" style="" disabled /></span><br/>
+    <span><strong>5</strong>: <input type="text" class="input-sm advancement" name="x5" value="<%= x5 %>" style="" /></span><br/>
+    <span><strong>10</strong>: <input type="text" class="input-sm advancement" name="x10" value="<%= x10 %>" style="" /></span><br/>
+    <span><strong>15</strong>: <input type="text" class="input-sm advancement" name="x15" value="<%= x15 %>" style="" /></span><br/>
+  </div>
+  <div class="col-xs-2 text-right">
+    <div class="text-center">
+      <strong>Seasoned</strong>
+    </div>
+    <span><strong>20</strong>: <input type="text" class="input-sm advancement" name="x20" value="<%= x20 %>" style="" /></span><br/>
+    <span><strong>25</strong>: <input type="text" class="input-sm advancement" name="x25" value="<%= x25 %>" style="" /></span><br/>
+    <span><strong>30</strong>: <input type="text" class="input-sm advancement" name="x30" value="<%= x30 %>" style="" /></span><br/>
+    <span><strong>35</strong>: <input type="text" class="input-sm advancement" name="x35" value="<%= x35 %>" style="" /></span><br/>
+  </div>
+  <div class="col-xs-2 text-right">
+    <div class="text-center">
+      <strong>Veteran</strong>
+    </div>
+    <span><strong>40</strong>: <input type="text" class="input-sm advancement" name="x40" value="<%= x40 %>" style="" /></span><br/>
+    <span><strong>45</strong>: <input type="text" class="input-sm advancement" name="x45" value="<%= x45 %>" style="" /></span><br/>
+    <span><strong>50</strong>: <input type="text" class="input-sm advancement" name="x50" value="<%= x50 %>" style="" /></span><br/>
+    <span><strong>55</strong>: <input type="text" class="input-sm advancement" name="x55" value="<%= x55 %>" style="" /></span><br/>
+  </div>
+  <div class="col-xs-2 text-right">
+    <div class="text-center">
+      <strong>Heroic</strong>
+    </div>
+    <span><strong>60</strong>: <input type="text" class="input-sm advancement" name="x60" value="<%= x60 %>" style="" /></span><br/>
+    <span><strong>65</strong>: <input type="text" class="input-sm advancement" name="x65" value="<%= x65 %>" style="" /></span><br/>
+    <span><strong>70</strong>: <input type="text" class="input-sm advancement" name="x70" value="<%= x70 %>" style="" /></span><br/>
+    <span><strong>75</strong>: <input type="text" class="input-sm advancement" name="x75" value="<%= x75 %>" style="" /></span><br/>
+  </div>
+  <div class="col-xs-2 text-right">
+    <div class="text-center">
+      <strong>Legendary</strong>
+    </div>
+    <span><strong>80</strong>: <input type="text" class="input-sm advancement" name="x80" value="<%= x80 %>" style="" /></span><br/>
+    <span><strong>90</strong>: <input type="text" class="input-sm advancement" name="x90" value="<%= x90 %>" style="" /></span><br/>
+    <span><strong>100</strong>: <input type="text" class="input-sm advancement" name="x100" value="<%= x100 %>" style="" /></span><br/>
+    <span><strong>110</strong>: <input type="text" class="input-sm advancement" name="x110" value="<%= x110 %>" style="" /></span><br/>
+  </div>
+</div>
+<!--
 <table class="table-condensed">
   <tr>
     <th class="text-center">Novice</th>
@@ -7,31 +55,32 @@
     <th class="text-center">Legendary</th>
   </tr>
   <tr>
-    <td class="text-right"><strong>0</strong>: <input type="text" class="input-sm invisible advancement" size="20" disabled /></td>
-    <td class="text-right"><strong>20</strong>: <input type="text" class="input-sm advancement" name="x20" value="<%= x20 %>" size="20" /></td>
-    <td class="text-right"><strong>40</strong>: <input type="text" class="input-sm advancement" name="x40" value="<%= x40 %>" size="20" /></td>
-    <td class="text-right"><strong>60</strong>: <input type="text" class="input-sm advancement" name="x60" value="<%= x60 %>" size="20" /></td>
-    <td class="text-right"><strong>80</strong>: <input type="text" class="input-sm advancement" name="x80" value="<%= x80 %>" size="20" /></td>
+    <td style="width:20%" class="text-right"><span style="width:100%"><strong>0</strong>: <input type="text" class="input-sm invisible advancement" style="" disabled /></span></td>
+    <td style="width:20%" class="text-right"><span style="width:100%"><strong>20</strong>: <input type="text" class="input-sm advancement" name="x20" value="<%= x20 %>" style="" /></span></td>
+    <td style="width:20%" class="text-right"><span style="width:100%"><strong>40</strong>: <input type="text" class="input-sm advancement" name="x40" value="<%= x40 %>" style="" /></span></td>
+    <td style="width:20%" class="text-right"><span style="width:100%"><strong>60</strong>: <input type="text" class="input-sm advancement" name="x60" value="<%= x60 %>" style="" /></span></td>
+    <td style="width:20%" class="text-right"><span style="width:100%"><strong>80</strong>: <input type="text" class="input-sm advancement" name="x80" value="<%= x80 %>" style="" /></span></td>
   </tr>
   <tr>
-    <td class="text-right"><strong>5</strong>: <input type="text" class="input-sm advancement" name="x5" value="<%= x5 %>" size="20" /></td>
-    <td class="text-right"><strong>25</strong>: <input type="text" class="input-sm advancement" name="x25" value="<%= x25 %>" size="20" /></td>
-    <td class="text-right"><strong>45</strong>: <input type="text" class="input-sm advancement" name="x45" value="<%= x45 %>" size="20" /></td>
-    <td class="text-right"><strong>65</strong>: <input type="text" class="input-sm advancement" name="x65" value="<%= x65 %>" size="20" /></td>
-    <td class="text-right"><strong>90</strong>: <input type="text" class="input-sm advancement" name="x90" value="<%= x90 %>" size="20" /></td>
+    <td style="width:20%" class="text-right"><span style="width:100%"><strong>5</strong>: <input type="text" class="input-sm advancement" name="x5" value="<%= x5 %>" style="" /></span></td>
+    <td style="width:20%" class="text-right"><span style="width:100%"><strong>25</strong>: <input type="text" class="input-sm advancement" name="x25" value="<%= x25 %>" style="" /></span></td>
+    <td style="width:20%" class="text-right"><span style="width:100%"><strong>45</strong>: <input type="text" class="input-sm advancement" name="x45" value="<%= x45 %>" style="" /></span></td>
+    <td style="width:20%" class="text-right"><span style="width:100%"><strong>65</strong>: <input type="text" class="input-sm advancement" name="x65" value="<%= x65 %>" style="" /></span></td>
+    <td style="width:20%" class="text-right"><span style="width:100%"><strong>90</strong>: <input type="text" class="input-sm advancement" name="x90" value="<%= x90 %>" style="" /></span></td>
   </tr>
   <tr>
-    <td class="text-right"><strong>10</strong>: <input type="text" class="input-sm advancement" name="x10" value="<%= x10 %>" size="20" /></td>
-    <td class="text-right"><strong>30</strong>: <input type="text" class="input-sm advancement" name="x30" value="<%= x30 %>" size="20" /></td>
-    <td class="text-right"><strong>50</strong>: <input type="text" class="input-sm advancement" name="x50" value="<%= x50 %>" size="20" /></td>
-    <td class="text-right"><strong>70</strong>: <input type="text" class="input-sm advancement" name="x70" value="<%= x70 %>" size="20" /></td>
-    <td class="text-right"><strong>100</strong>: <input type="text" class="input-sm advancement" name="x100" value="<%= x100 %>" size="20" /></td>
+    <td style="width:20%" class="text-right"><span style="width:100%"><strong>10</strong>: <input type="text" class="input-sm advancement" name="x10" value="<%= x10 %>" style="" /></span></td>
+    <td style="width:20%" class="text-right"><span style="width:100%"><strong>30</strong>: <input type="text" class="input-sm advancement" name="x30" value="<%= x30 %>" style="" /></span></td>
+    <td style="width:20%" class="text-right"><span style="width:100%"><strong>50</strong>: <input type="text" class="input-sm advancement" name="x50" value="<%= x50 %>" style="" /></span></td>
+    <td style="width:20%" class="text-right"><span style="width:100%"><strong>70</strong>: <input type="text" class="input-sm advancement" name="x70" value="<%= x70 %>" style="" /></span></td>
+    <td style="width:20%" class="text-right"><span style="width:100%"><strong>100</strong>: <input type="text" class="input-sm advancement" name="x100" value="<%= x100 %>" style="" /></span></td>
   </tr>
   <tr>
-    <td class="text-right"><strong>15</strong>: <input type="text" class="input-sm advancement" name="x15" value="<%= x15 %>" size="20" /></td>
-    <td class="text-right"><strong>35</strong>: <input type="text" class="input-sm advancement" name="x35" value="<%= x35 %>" size="20" /></td>
-    <td class="text-right"><strong>55</strong>: <input type="text" class="input-sm advancement" name="x55" value="<%= x55 %>" size="20" /></td>
-    <td class="text-right"><strong>75</strong>: <input type="text" class="input-sm advancement" name="x75" value="<%= x75 %>" size="20" /></td>
-    <td class="text-right"><strong>110</strong>: <input type="text" class="input-sm advancement" name="x110" value="<%= x110 %>" size="20" /></td>
+    <td style="width:20%" class="text-right"><span style="width:100%"><strong>15</strong>: <input type="text" class="input-sm advancement" name="x15" value="<%= x15 %>" style="" /></span></td>
+    <td style="width:20%" class="text-right"><span style="width:100%"><strong>35</strong>: <input type="text" class="input-sm advancement" name="x35" value="<%= x35 %>" style="" /></span></td>
+    <td style="width:20%" class="text-right"><span style="width:100%"><strong>55</strong>: <input type="text" class="input-sm advancement" name="x55" value="<%= x55 %>" style="" /></span></td>
+    <td style="width:20%" class="text-right"><span style="width:100%"><strong>75</strong>: <input type="text" class="input-sm advancement" name="x75" value="<%= x75 %>" style="" /></span></td>
+    <td style="width:20%" class="text-right"><span style="width:100%"><strong>110</strong>: <input type="text" class="input-sm advancement" name="x110" value="<%= x110 %>" style="" /></span></td>
   </tr>
 </table>
+-->

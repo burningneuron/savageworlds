@@ -91,9 +91,10 @@ var putCharacter = function(req, res) {
           character.save();
           res.json(character);
 				} else {
+					logger.info("Current user does not own this character, creating a copy.");
 					// user does not own, create a copy
 					putChar.userId = req.user.id;
-					delete putChar._id;
+					putChar._id = null;
 					Character.create(putChar, function(err, character) {
 						if (err) {
 							logger.error("Error on character creation: " + err);

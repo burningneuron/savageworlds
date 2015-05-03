@@ -92,16 +92,22 @@ var putCharacter = function(req, res) {
           res.json(character);
 				} else {
 					logger.info("Current user does not own this character, creating a copy.");
-					// user does not own, create a copy
-					putChar.userId = req.user.id;
-					putChar._id = null;
-					Character.create(putChar, function(err, character) {
+
+					Character.create({
+						userId: req.user.id,
+						character.system: putChar.system,
+	  				character.setting: putChar.setting,
+	  				character.player: putChar.player,
+	          character.name: putChar.name,
+	          character.gameStuff: putChar.gameStuff,
+
+					}, function(err, newCharacter) {
 						if (err) {
 							logger.error("Error on character creation: " + err);
 							res.send(err);
 						} else {
-							logger.info("Character added: " + character);
-							res.json(character);
+							logger.info("Character added: " + newCharacter);
+							res.json(newCharacter);
 						}
 					});
 				}

@@ -3,7 +3,7 @@
 define(["jquery",
 		"backbone",
 		"models/User",
-		"text!templates/characterSummary.html",
+		"text!templates/myCharacterSummary.html",
 		"Backbone.Marionette"
 	],
 

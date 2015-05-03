@@ -3,8 +3,8 @@
 define(["jquery",
 		"backbone",
 		"views/ListView",
-		"text!templates/characterListView.html",
-		"views/CharacterSummaryView",
+		"text!templates/myCharacterListView.html",
+		"views/MyCharacterSummaryView",
 		"Backbone.Marionette"
 	],
 

@@ -47,9 +47,14 @@ var setCharacterDefaults = function(character) {
 };
 
 var getCharacters = function(req, res) {
-	_hl(Character.find({
-	  userId: req.user ? req.user.id : 0
-	}))
+	logger.debug(req.params);
+	var queryOptions = {};
+	if (!req.params.all) {
+		logger.debug('not fetching all');
+		queryOptions.userId = req.user ? req.user.id : 0;
+	}
+
+	_hl(Character.find(queryOptions))
 		.flatten()
 		.map(setCharacterDefaults)
 		.toArray(function(characters) {

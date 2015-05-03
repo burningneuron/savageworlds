@@ -109,7 +109,7 @@ define(["jquery",
 				this.model.save(null, {
 					success: function() {
 						console.log('model save successful');
-						router.navigate("characters", true);
+						router.navigate("myCharacters", true);
 					},
 					failure: function() {
 						console.log('model save failed');

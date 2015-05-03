@@ -53,6 +53,7 @@ authRouter.initialize(app, passport); // load our routes and pass in our app and
 app.get('/api/user', charController.getUser);
 
 // character CRUD
+app.get('/api/character/:all', charController.getCharacters);
 app.get('/api/character', charController.getCharacters);
 app.get('/api/character/:character_id', charController.getCharacter);
 app.put('/api/character/:character_id', authRouter.isLoggedIn,

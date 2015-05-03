@@ -5,7 +5,7 @@ define(["jquery",
 		"collections/CharacterCollection",
 		"models/User",
 		"models/Character",
-		"views/CharacterListView",
+		"views/MyCharacterListView",
 		"views/LoginView",
 		"views/ProfileView",
 		"views/AboutView",
@@ -15,7 +15,7 @@ define(["jquery",
 		"savageworlds/edit/views/CharacterDetailView",
 	],
 
-	function($, Backbone, CharacterCollection, UserModel, CharacterModel, CharacterListView,
+	function($, Backbone, CharacterCollection, UserModel, CharacterModel, MyCharacterListView,
 		LoginView, ProfileView, AboutView, Marionette, SavageWorldsCharacterModel,
 			SavageWorldsCharacterDisplay, SavageWorldsCharacterEditor) {
 
@@ -42,7 +42,8 @@ define(["jquery",
 				// When there is no hash on the url, the home method is called
 				"": "index",
         "addCharacter": "addCharacter",
-				"characters": "listCharacters",
+				"allCharacters": "listAllCharacters",
+				"myCharacters": "listMyCharacters",
 				"editCharacter?id=:id": "editCharacter",
 				"showCharacter?id=:id": "showCharacter",
 				"profile": "profile",
@@ -68,11 +69,22 @@ define(["jquery",
 				}));
 			},
 
-			listCharacters: function() {
+			listAllCharacters: function() {
+				var characters = new CharacterCollection();
+				characters.url += '/all';
+				characters.fetch();
+
+				this.showView(new MyCharacterListView({
+					router: this,
+					collection: characters
+				}));
+			},
+
+			listMyCharacters: function() {
 				var characters = new CharacterCollection();
 				characters.fetch();
 
-				this.showView(new CharacterListView({
+				this.showView(new MyCharacterListView({
 					router: this,
 					collection: characters
 				}));

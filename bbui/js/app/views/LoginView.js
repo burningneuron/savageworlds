@@ -34,7 +34,8 @@ define(["jquery",
 				"click #googlebutton": "gotoProfile",
 
 				"click a.about": "gotoAbout",
-				"click a.characterList": "gotoCharacterList",
+				"click a.allCharacters": "showAllCharacters",
+				"click a.myCharacters": "showMyCharacters",
 			},
 
 			gotoProfile: function() {
@@ -45,8 +46,12 @@ define(["jquery",
 				this.router.navigate("", true);
 			},
 
-			gotoCharacterList: function() {
-				this.router.navigate("characters", true);
+			showAllCharacters: function() {
+				this.router.navigate("allCharacters", true);
+			},
+
+			showMyCharacters: function() {
+				this.router.navigate("myCharacters", true);
 			},
 
 			// Renders the view's template to the UI

@@ -29,11 +29,7 @@ define(["jquery",
 			},
 
 			updateModel: function(event) {
-				var attributeName = event.target.name;
-console.log(attributeName);
-console.log(this.model.get(attributeName));
-				this.model.set(attributeName, event.target.value);
-console.log(this.model.get(attributeName));
+				this.model.set(event.target.name, event.target.value);
 			},
 
 			render: function() {

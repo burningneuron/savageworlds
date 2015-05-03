@@ -5,7 +5,7 @@ define(["jquery",
   ],
   function($, Backbone, template) {
     var EdgeDetailView = Backbone.Marionette.ItemView.extend({
-
+      tagName: 'tr',
       initialize: function(options) {},
 
       close: function() {

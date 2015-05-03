@@ -5,6 +5,7 @@ define(["jquery",
 	],
 	function($, Backbone, template) {
 		var SkillDetailView = Backbone.Marionette.ItemView.extend({
+			tagName: 'tr',
 			initialize: function(options) {},
 
 			close: function() {

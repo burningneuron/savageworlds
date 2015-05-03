@@ -10,7 +10,8 @@ define(["jquery",
 			initialize: function(options) {
 				this.listView = new ListView({
 					childView: PowerDetailView,
-					collection: options.collection
+					collection: options.collection,
+					tagName: 'tbody'
 				});
 
 			},

@@ -5,6 +5,7 @@ define(["jquery",
 	],
 	function($, Backbone, template) {
 		var HindranceDetailView = Backbone.Marionette.ItemView.extend({
+			tagName: 'tr',
 			initialize: function(options) {
 				this.listenTo(this.model, 'change', this.render);
 			},

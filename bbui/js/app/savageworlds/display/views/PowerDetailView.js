@@ -6,6 +6,7 @@ define(["jquery",
 	function($, Backbone, template) {
 		var PowerDetailView = Backbone.Marionette.ItemView.extend({
 
+			tagName: 'tr',
 			initialize: function(options) {},
 
 			close: function() {

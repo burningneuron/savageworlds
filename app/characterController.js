@@ -38,10 +38,11 @@ var getUser = function(req, res) {
 	}
 };
 
+var getUserName = function(req) {
+	return req.user.facebook.name || req.user.twitter.displayName || req.user.google.name;
+}
+
 var setCharacterDefaults = function(character) {
-	// character.name = _.isEmpty(character.name) ? "* no name *" : character.name;
-	// character.system = _.isEmpty(character.system) ? "* no system *" : character.system;
-	// character.setting = _.isEmpty(character.setting) ? "* no setting *" : character.setting;
 	return character;
 };
 
@@ -82,6 +83,7 @@ var putCharacter = function(req, res) {
 			} else {
 				if (character && character.userId === req.user.id) {
 					// user owns the character, so update it
+					character.userName = getUserName(req);
           character.system = putChar.system;
   				character.setting = putChar.setting;
   				character.player = putChar.player;
@@ -95,6 +97,7 @@ var putCharacter = function(req, res) {
 
 					Character.create({
 						userId: req.user.id,
+						userName: getUserName(req),
 						system: putChar.system,
 	  				setting: putChar.setting,
 	  				player: putChar.player,
@@ -135,6 +138,7 @@ var postCharacter = function(req, res) {
 	var postChar = validRequest(req, res);
 	if (postChar) {
 		postChar.userId = req.user.id;
+		postChar.userName = getUserName(req);
 		Character.create(postChar, function(err, character) {
 			if (err) {
 				logger.error("Error on character creation: " + err);

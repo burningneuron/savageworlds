@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 // Define our character schema
 var CharacterSchema = new mongoose.Schema({
   userId: String,
+  userName: String,
   system: String,
   setting: String,
   player: String,

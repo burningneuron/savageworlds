@@ -95,11 +95,11 @@ var putCharacter = function(req, res) {
 
 					Character.create({
 						userId: req.user.id,
-						character.system: putChar.system,
-	  				character.setting: putChar.setting,
-	  				character.player: putChar.player,
-	          character.name: putChar.name,
-	          character.gameStuff: putChar.gameStuff,
+						system: putChar.system,
+	  				setting: putChar.setting,
+	  				player: putChar.player,
+	          name: putChar.name,
+	          gameStuff: putChar.gameStuff,
 
 					}, function(err, newCharacter) {
 						if (err) {

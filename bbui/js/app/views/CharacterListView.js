@@ -19,7 +19,8 @@ define(["jquery",
 				this.listView = new ListView({
           childView: CharacterSummaryView,
           collection: options.collection,
-					router: options.router
+					router: options.router,
+					tagName: 'tbody'
         });
 
 				this.collection = options.collection;

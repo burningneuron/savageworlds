@@ -23,13 +23,8 @@ define(["jquery",
 				this.model.destroy();
 			},
 
-			updateModel: function() {
-				this.model.set('power_points', this.$("[name='power_points']").val());
-				this.model.set('name', this.$("[name='name']").val());
-				this.model.set('trappings', this.$("[name='trappings']").val());
-				this.model.set('effect', this.$("[name='effect']").val());
-				this.model.set('duration', this.$("[name='duration']").val());
-				this.model.set('notes', this.$("[name='notes']").val());
+			updateModel: function(event) {
+				this.model.set(event.target.name, event.target.value);
 			},
 
 			render: function() {

@@ -28,15 +28,12 @@ define(["jquery",
 				this.model.destroy();
 			},
 
-			updateModel: function() {
-				this.model.set('name', this.$("[name='name']").val());
-				this.model.set('range', this.$("[name='range']").val());
-				this.model.set('damage', this.$("[name='damage']").val());
-				this.model.set('rof', this.$("[name='rof']").val());
-				this.model.set('weight', this.$("[name='weight']").val());
-				this.model.set('shots', this.$("[name='shots']").val());
-				this.model.set('min_str', this.$("[name='min_str']").val());
-				this.model.set('notes', this.$("[name='notes']").val());
+			updateModel: function(event) {
+				var attributeName = event.target.name;
+console.log(attributeName);
+console.log(this.model.get(attributeName));
+				this.model.set(attributeName, event.target.value);
+console.log(this.model.get(attributeName));
 			},
 
 			render: function() {

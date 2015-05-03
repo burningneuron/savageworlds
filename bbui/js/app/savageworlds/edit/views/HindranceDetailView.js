@@ -29,9 +29,8 @@ define(["jquery",
 				this.model.destroy();
 			},
 
-			updateModel: function(d) {
-				this.model.set('name', this.$("[name='name']").val());
-				this.model.set('effect', this.$("[name='effect']").val());
+			updateModel: function(event) {
+				this.model.set(event.target.name, event.target.value);
 			},
 
 			render: function() {

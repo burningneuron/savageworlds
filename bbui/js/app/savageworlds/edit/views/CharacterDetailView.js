@@ -88,32 +88,12 @@ define(["jquery",
 				});
 			},
 
-			updateModel: function() {
-				this.model.set('setting', this.$("[name='setting']").val());
-				this.model.set('player', this.$("[name='player']").val());
-				this.model.set('name', this.$("[name='name']").val());
-
-				this.model.set('gameStuff.race', this.$("[name='race']").val());
-				this.model.set('gameStuff.rank', this.$("[name='rank']").val());
-				this.model.set('gameStuff.xp', this.$("[name='xp']").val());
-				this.model.set('gameStuff.money', this.$("[name='money']").val());
-
-				this.model.set('gameStuff.agility', this.$("[name='agility']").val());
-				this.model.set('gameStuff.smarts', this.$("[name='smarts']").val());
-				this.model.set('gameStuff.spirit', this.$("[name='spirit']").val());
-				this.model.set('gameStuff.strength', this.$("[name='strength']")
-					.val());
-				this.model.set('gameStuff.vigor', this.$("[name='vigor']").val());
-
-				this.model.set('gameStuff.charisma', this.$("[name='charisma']")
-					.val());
-				this.model.set('gameStuff.pace', this.$("[name='pace']").val());
-				this.model.set('gameStuff.parry', this.$("[name='parry']").val());
-				this.model.set('gameStuff.toughness', this.$(
-					"[name='toughness']").val());
+			updateModel: function(event) {
+				this.model.set(event.target.name, event.target.value);
 			},
 
 			save: function() {
+				// console.log(this.model.toJSON());
 				this.model.save(null, {
 					success: function() {
 						console.log('model save successful');

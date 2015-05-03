@@ -5,9 +5,8 @@ define(["jquery",
 	],
 	function($, Backbone, template) {
 		var WeaponDetailView = Backbone.Marionette.ItemView.extend({
-
+			tagName: 'tr',
 			initialize: function(options) {
-				this.tagName = 'div';
 			},
 
 			close: function() {
@@ -17,7 +16,12 @@ define(["jquery",
 
 			events: {
 				'change input.weapon': 'updateModel',
-				'click a.weapon': 'deleteModel'
+				'click button.weapon': 'deleteModel',
+				'focus input.weapon': 'scrollLeft'
+			},
+
+			scrollLeft: function(event) {
+				event.target.scrollLeft = event.target.scrollWidth;
 			},
 
 			deleteModel: function() {

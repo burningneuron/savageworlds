@@ -1,9 +1,11 @@
-<td style="width:5%">
-  <a class="btn btn-xs btn-danger hindrance">x</a>
+<td >
+  <button class="btn btn-xs btn-danger hindrance">x</button>
 </td>
-<td style="width:25%">
-  <input style="width: 100%;" type="text" class="input-sm hindrance" name="name" value="<%= name %>" />
+<td >
+  <input type="text" class="input-sm hindrance hidden-xs" name="name" value="<%= name %>" size="10" />
+  <input type="text" class="input-sm hindrance hidden-sm hidden-md hidden-lg" name="name" value="<%= name %>" size="7" />
 </td>
-<td style="width:70%">
-  <input style="width: 100%;" type="text" class="input-sm hindrance" name="effect" value="<%= effect %>"  />
+<td >
+  <input type="text" class="input-sm hindrance hidden-xs" name="effect" value="<%= effect %>" size="30" />
+  <input type="text" class="input-sm hindrance hidden-sm hidden-md hidden-lg" name="effect" value="<%= effect %>" size="15" />
 </td>

@@ -7,6 +7,7 @@ define(["jquery",
     var EdgeDetailView = Backbone.Marionette.ItemView.extend({
 
       initialize: function(options) {},
+      tagName: 'tr',
 
       close: function() {
         this.remove();
@@ -15,8 +16,13 @@ define(["jquery",
 
       events: {
         'change input.edge': 'updateModel',
-        'click a.edge': 'deleteModel'
+        'click button.edge': 'deleteModel',
+        'focus input.edge': 'scrollLeft'
       },
+
+      scrollLeft: function(event) {
+				event.target.scrollLeft = event.target.scrollWidth;
+			},
 
       deleteModel: function() {
         this.model.destroy();

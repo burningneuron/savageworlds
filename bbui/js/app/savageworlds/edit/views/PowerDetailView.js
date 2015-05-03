@@ -7,6 +7,7 @@ define(["jquery",
 		var PowerDetailView = Backbone.Marionette.ItemView.extend({
 
 			initialize: function(options) {},
+			tagName: 'tr',
 
 			close: function() {
 				this.remove();
@@ -15,7 +16,7 @@ define(["jquery",
 
 			events: {
 				'change input.power': 'updateModel',
-				'click a.power': 'deleteModel'
+				'click button.power': 'deleteModel'
 			},
 
 			deleteModel: function() {

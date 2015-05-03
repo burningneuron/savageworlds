@@ -49,18 +49,56 @@
   <!--Detect if the browser is a mobile browser or a desktop browser and conditionally include your JavaScript -->
   <script src="js/app/main.js">
   </script>
-<style>@media (max-width: 767px) {
-  .hidden-xs {
-    display: none !important;
-  }
-  tr.hidden-xs {
-    display: none !important;
-  }
-  th.hidden-xs,
-  td.hidden-xs {
-    display: none !important;
-  }
-}</style>
+  <style>
+    @media (max-width: 767px) {
+      .hidden-xs {
+        display: none !important;
+      }
+      tr.hidden-xs {
+        display: none !important;
+      }
+      th.hidden-xs,
+      td.hidden-xs {
+        display: none !important;
+      }
+    }
+    @media (min-width: 768px) and (max-width: 991px){
+      .hidden-sm {
+        display: none !important;
+      }
+      tr.hidden-sm {
+        display: none !important;
+      }
+      th.hidden-sm,
+      td.hidden-sm {
+        display: none !important;
+      }
+    }
+    @media (min-width: 992px) and (max-width: 1199px){
+      .hidden-md {
+        display: none !important;
+      }
+      tr.hidden-md {
+        display: none !important;
+      }
+      th.hidden-md,
+      td.hidden-md {
+        display: none !important;
+      }
+    }
+    @media (min-width: 1200px){
+      .hidden-lg {
+        display: none !important;
+      }
+      tr.hidden-lg {
+        display: none !important;
+      }
+      th.hidden-lg,
+      td.hidden-lg {
+        display: none !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -70,6 +108,11 @@
       <div class="login"/>
     </header>
     <!-- /header -->
+<label>Your Display: </label>
+<span class="hidden-sm hidden-md hidden-lg">Extra Small</span>
+<span class="hidden-xs hidden-md hidden-lg">Small</span>
+<span class="hidden-sm hidden-xs hidden-lg">Medium</span>
+<span class="hidden-sm hidden-md hidden-xs">Large</span>
 
     <div class="container-fluid" data-role="content">
 

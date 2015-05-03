@@ -67,6 +67,11 @@ define(["jquery",
 				"click a#save": "save",
 				"click a#saveAndClose": "saveAndClose",
 				"click a#displayMode": "displayMode",
+				'focus input.base': 'scrollLeft',
+			},
+
+			scrollLeft: function(event) {
+				event.target.scrollLeft = event.target.scrollWidth;
 			},
 
 			displayMode: function() {

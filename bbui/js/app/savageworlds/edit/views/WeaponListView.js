@@ -11,7 +11,7 @@ define(["jquery",
 				this.listView = new ListView({
 					childView: WeaponDetailView,
 					collection: options.collection,
-					tagName: 'div'
+					tagName: 'tbody'
 				});
 
 			},

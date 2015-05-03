@@ -6,6 +6,7 @@ define(["jquery",
 	function($, Backbone, template) {
 		var SkillDetailView = Backbone.Marionette.ItemView.extend({
 			initialize: function(options) {},
+			tagName: 'tr',
 
 			close: function() {
 				this.remove();
@@ -14,7 +15,7 @@ define(["jquery",
 
 			events: {
 				'change input.skill': 'updateModel',
-				'click a.skill': 'deleteModel'
+				'click button.skill': 'deleteModel'
 			},
 
 			deleteModel: function() {

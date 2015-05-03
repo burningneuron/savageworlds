@@ -10,6 +10,7 @@ define(["jquery",
 			initialize: function(options) {
 				this.listView = new ListView({
 					childView: HindranceDetailView,
+					tagName: 'tbody',
 					collection: options.collection
 				});
 			},

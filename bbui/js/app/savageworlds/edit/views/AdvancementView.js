@@ -13,7 +13,12 @@ define(["jquery",
 
       events: {
         'change input.advancement': 'updateModel',
+        'focus input.advancement': 'scrollLeft'
       },
+
+      scrollLeft: function(event) {
+				event.target.scrollLeft = event.target.scrollWidth;
+			},
 
       updateModel: function() {
         this.model.set('x5', this.$("[name='x5']").val());

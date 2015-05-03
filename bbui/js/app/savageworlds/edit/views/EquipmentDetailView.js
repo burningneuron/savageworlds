@@ -6,6 +6,7 @@ define(["jquery",
 	function($, Backbone, template) {
 		var EquipmentDetailView = Backbone.Marionette.ItemView.extend({
 			initialize: function(options) {},
+			tagName: 'tr',
 
 			close: function() {
 				this.remove();
@@ -14,7 +15,12 @@ define(["jquery",
 
 			events: {
 				'change input.equipment': 'updateModel',
-				'click a.equipment': 'deleteModel'
+				'click button.equipment': 'deleteModel',
+				'focus input.equipment': 'scrollLeft'
+			},
+
+			scrollLeft: function(event) {
+				event.target.scrollLeft = event.target.scrollWidth;
 			},
 
 			deleteModel: function() {

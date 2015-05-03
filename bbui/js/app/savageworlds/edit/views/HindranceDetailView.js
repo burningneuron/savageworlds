@@ -8,6 +8,7 @@ define(["jquery",
 			initialize: function(options) {
 				this.listenTo(this.model, 'change', this.render);
 			},
+			tagName: 'tr',
 
 			close: function() {
 				this.remove();
@@ -16,7 +17,12 @@ define(["jquery",
 
 			events: {
 				'change input.hindrance': 'updateModel',
-				'click a.hindrance': 'deleteModel'
+				'click button.hindrance': 'deleteModel',
+				'focus input.hindrance': 'scrollLeft'
+			},
+
+			scrollLeft: function(event) {
+				event.target.scrollLeft = event.target.scrollWidth;
 			},
 
 			deleteModel: function() {

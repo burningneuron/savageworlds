@@ -7,14 +7,12 @@ define(["jquery",
 
   function($, Backbone, Marionette) {
     var ListView = Backbone.Marionette.CollectionView.extend({
-      tagName: 'tbody',
 
       initialize: function(options) {
         this.childView = options.childView;
         this.childViewOptions = {
           template: options.template,
-          router: options.router,
-          tagName: 'tr'
+          router: options.router
         };
         this.collection.comparator = 'name';
         this.collection.sort();

@@ -5,6 +5,7 @@ define(["jquery",
 		"collections/CharacterCollection",
 		"models/User",
 		"models/Character",
+		"views/AllCharacterListView",
 		"views/MyCharacterListView",
 		"views/LoginView",
 		"views/ProfileView",
@@ -15,7 +16,8 @@ define(["jquery",
 		"savageworlds/edit/views/CharacterDetailView",
 	],
 
-	function($, Backbone, CharacterCollection, UserModel, CharacterModel, MyCharacterListView,
+	function($, Backbone, CharacterCollection, UserModel, CharacterModel,
+		AllCharacterListView, MyCharacterListView,
 		LoginView, ProfileView, AboutView, Marionette, SavageWorldsCharacterModel,
 			SavageWorldsCharacterDisplay, SavageWorldsCharacterEditor) {
 
@@ -71,10 +73,10 @@ define(["jquery",
 
 			listAllCharacters: function() {
 				var characters = new CharacterCollection();
-				characters.url += '/all';
+				characters.url = '/api/allCharacters';
 				characters.fetch();
 
-				this.showView(new MyCharacterListView({
+				this.showView(new AllCharacterListView({
 					router: this,
 					collection: characters
 				}));

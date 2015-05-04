@@ -40,23 +40,21 @@ var getUser = function(req, res) {
 
 var getUserName = function(req) {
 	return req.user.facebook.name || req.user.twitter.displayName || req.user.google.name;
-}
+};
 
-var setCharacterDefaults = function(character) {
-	return character;
+var getAllCharacters = function(req, res) {
+	_hl(Character.find())
+		.flatten()
+		.toArray(function(characters) {
+			res.json(characters);
+		});
 };
 
 var getCharacters = function(req, res) {
-	logger.debug(req.params);
-	var queryOptions = {};
-	if (!req.params.all) {
-		logger.debug('not fetching all');
-		queryOptions.userId = req.user ? req.user.id : 0;
-	}
-
-	_hl(Character.find(queryOptions))
+	_hl(Character.find({
+			userId: req.user ? req.user.id : 0
+		}))
 		.flatten()
-		.map(setCharacterDefaults)
 		.toArray(function(characters) {
 			res.json(characters);
 		});
@@ -69,7 +67,6 @@ var getCharacter = function(req, res) {
 			_id: id
 		}))
 		.flatten()
-		.map(setCharacterDefaults)
 		.take(1)
 		.each(function(characters) {
 			res.json(characters);
@@ -158,6 +155,7 @@ var postCharacter = function(req, res) {
 
 module.exports = {
 	getUser: getUser,
+	getAllCharacters: getAllCharacters,
 	getCharacters: getCharacters,
 	getCharacter: getCharacter,
 	putCharacter: putCharacter,

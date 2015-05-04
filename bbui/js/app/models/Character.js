@@ -16,6 +16,7 @@ define(["jquery", "backbone", "Backbone.DocumentModel"],
 
 			// Default values for all of the Model attributes
 			defaults: {
+				userName: "Unknown",
 				system: "Savage Worlds",
 				setting: "NO SETTING",
 				player: "",

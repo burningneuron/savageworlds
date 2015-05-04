@@ -5,6 +5,7 @@ define(["jquery",
 		"collections/CharacterCollection",
 		"models/User",
 		"models/Character",
+		"views/AllCharacterListView",
 		"views/MyCharacterListView",
 		"views/LoginView",
 		"views/ProfileView",
@@ -15,9 +16,10 @@ define(["jquery",
 		"savageworlds/edit/views/CharacterDetailView",
 	],
 
-	function($, Backbone, CharacterCollection, UserModel, CharacterModel, MyCharacterListView,
+	function($, Backbone, CharacterCollection, UserModel, CharacterModel,
+		AllCharacterListView, MyCharacterListView,
 		LoginView, ProfileView, AboutView, Marionette, SavageWorldsCharacterModel,
-			SavageWorldsCharacterDisplay, SavageWorldsCharacterEditor) {
+		SavageWorldsCharacterDisplay, SavageWorldsCharacterEditor) {
 
 		var MobileRouter = Backbone.Router.extend({
 
@@ -42,7 +44,8 @@ define(["jquery",
 				// When there is no hash on the url, the home method is called
 				"": "index",
         "addCharacter": "addCharacter",
-				"characters": "listCharacters",
+				"allCharacters": "listAllCharacters",
+				"myCharacters": "listMyCharacters",
 				"editCharacter?id=:id": "editCharacter",
 				"showCharacter?id=:id": "showCharacter",
 				"profile": "profile",
@@ -68,7 +71,18 @@ define(["jquery",
 				}));
 			},
 
-			listCharacters: function() {
+			listAllCharacters: function() {
+				var characters = new CharacterCollection();
+				characters.url = '/api/allCharacters';
+				characters.fetch();
+
+				this.showView(new AllCharacterListView({
+					router: this,
+					collection: characters
+				}));
+			},
+
+			listMyCharacters: function() {
 				var characters = new CharacterCollection();
 				characters.fetch();
 

@@ -1,0 +1,1 @@
+define(["jquery","backbone","models/User","text!templates/profileView.html"],function(e,t,n,r){var i=t.View.extend({initialize:function(e){this.router=e.router,this.listenTo(this.model,"change",this.render),this.render()},close:function(){this.remove(),this.unbind()},events:{},render:function(){return this.$el.html(_.template(r,this.model.toJSON())),this}});return i});

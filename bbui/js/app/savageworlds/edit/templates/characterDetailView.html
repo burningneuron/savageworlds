@@ -1,0 +1,136 @@
+<div class="row">
+  <div class="col-xs-2">
+    <a class="btn btn-default" id="displayMode">Display Mode</a>
+  </div>
+  <div class="col-xs-7">
+  </div>
+  <div class="col-xs-3 text-right" >
+    <a class="btn btn-default" id="save">Save</a>
+    <a class="btn btn-default" id="saveAndClose">Save and Close</a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-4">
+    <div class="well">
+      <h4 class="text-center">Background</h4>
+      <table class="table-condensed editMode hidden-xs">
+        <tr><td align="right"><strong>System</strong></td><td><span><%= system %></span></td></tr>
+        <tr><td align="right"><strong>Setting</strong></td><td><input type="text" class="input-sm base" name="setting" value="<%= setting %>" size="25" /></td></tr>
+        <tr><td align="right"><strong>Player</strong></td><td><input type="text" class="input-sm base" name="player" value="<%= player %>" size="25" /></td></tr>
+        <tr><td align="right"><strong>Name</strong></td><td><input type="text" class="input-sm base" name="name" value="<%= name %>" size="25" /></td></tr>
+        <tr><td align="right"><strong>Race</strong></td><td><input type="text" class="input-sm base" name="gameStuff.race" value="<%= gameStuff.race %>" size="25" /></td></tr>
+        <tr><td align="right"><strong>Rank</strong></td><td><input type="text" class="input-sm base" name="gameStuff.rank" value="<%= gameStuff.rank %>" size="25" /></td></tr>
+        <tr><td align="right"><strong>Experience</strong></td><td><input type="text" class="input-sm base" name="gameStuff.xp" value="<%= gameStuff.xp %>" size="25" /></td></tr>
+        <tr><td align="right"><strong>Money</strong></td><td><input type="text" class="input-sm base" name="gameStuff.money" value="<%= gameStuff.money %>" size="25" /></td></tr>
+      </table>
+      <table class="table-condensed editMode hidden-sm hidden-md hidden-lg">
+        <tr><td align="right"><strong>System</strong></td><td><span><%= system %></span></td></tr>
+        <tr><td align="right"><strong>Setting</strong></td><td><input type="text" class="input-sm base" name="setting" value="<%= setting %>" size="20" /></td></tr>
+        <tr><td align="right"><strong>Player</strong></td><td><input type="text" class="input-sm base" name="player" value="<%= player %>" size="20" /></td></tr>
+        <tr><td align="right"><strong>Name</strong></td><td><input type="text" class="input-sm base" name="name" value="<%= name %>" size="20" /></td></tr>
+        <tr><td align="right"><strong>Race</strong></td><td><input type="text" class="input-sm base" name="gameStuff.race" value="<%= gameStuff.race %>" size="20" /></td></tr>
+        <tr><td align="right"><strong>Rank</strong></td><td><input type="text" class="input-sm base" name="gameStuff.rank" value="<%= gameStuff.rank %>" size="20" /></td></tr>
+        <tr><td align="right"><strong>Experience</strong></td><td><input type="text" class="input-sm base" name="gameStuff.xp" value="<%= gameStuff.xp %>" size="20" /></td></tr>
+        <tr><td align="right"><strong>Money</strong></td><td><input type="text" class="input-sm base" name="gameStuff.money" value="<%= gameStuff.money %>" size="20" /></td></tr>
+      </table>
+    </div>
+    <div class="well">
+      <h4 class="text-center">Attributes</h4>
+      <table class="table-condensed editMode hidden-xs">
+        <tr>
+          <td align="right"><strong>Agility</strong></td><td><input type="text" class="input-sm base" name="gameStuff.agility" value="<%= gameStuff.agility %>" size="5" /></td>
+          <td align="right"><strong>Charisma</strong></td><td><input type="text" class="input-sm base" name="gameStuff.charisma" value="<%= gameStuff.charisma %>" size="10" /></td>
+        </tr>
+        <tr>
+          <td align="right"><strong>Smarts</strong></td><td><input type="text" class="input-sm base" name="gameStuff.smarts" value="<%= gameStuff.smarts %>" size="5" /></td>
+          <td align="right"><strong>Pace</strong></td><td><input type="text" class="input-sm base" name="gameStuff.pace" value="<%= gameStuff.pace %>" size="10" /></td>
+        </tr>
+        <tr>
+          <td align="right"><strong>Spirit</strong></td><td><input type="text" class="input-sm base" name="gameStuff.spirit" value="<%= gameStuff.spirit %>" size="5" /></td>
+          <td align="right"><strong>Parry</strong></td><td><input type="text" class="input-sm base" name="gameStuff.parry" value="<%= gameStuff.parry %>" size="10" /></td>
+        </tr>
+        <tr>
+          <td align="right"><strong>Strength</strong></td><td><input type="text" class="input-sm base" name="gameStuff.strength" value="<%= gameStuff.strength %>" size="5" /></td>
+          <td align="right"><strong>Toughness</strong></td><td><input type="text" class="input-sm base" name="gameStuff.toughness" value="<%= gameStuff.toughness %>" size="10" /></td>
+        </tr>
+        <tr>
+          <td align="right"><strong>Vigor</strong></td><td><input type="text" class="input-sm base" name="gameStuff.vigor" value="<%= gameStuff.vigor %>" size="5" /></td>
+          <td align="right">&nbsp;</td><td>&nbsp;</td>
+        </tr>
+      </table>
+      <table class="table-condensed editMode hidden-sm hidden-md hidden-lg">
+        <tr>
+          <td align="right"><strong>Agility</strong></td><td><input type="text" class="input-sm base" name="gameStuff.agility" value="<%= gameStuff.agility %>" size="5" /></td>
+        </tr>
+        <tr>
+          <td align="right"><strong>Smarts</strong></td><td><input type="text" class="input-sm base" name="gameStuff.smarts" value="<%= gameStuff.smarts %>" size="5" /></td>
+        </tr>
+        <tr>
+          <td align="right"><strong>Spirit</strong></td><td><input type="text" class="input-sm base" name="gameStuff.spirit" value="<%= gameStuff.spirit %>" size="5" /></td>
+        </tr>
+        <tr>
+          <td align="right"><strong>Strength</strong></td><td><input type="text" class="input-sm base" name="gameStuff.strength" value="<%= gameStuff.strength %>" size="5" /></td>
+        </tr>
+        <tr>
+          <td align="right"><strong>Vigor</strong></td><td><input type="text" class="input-sm base" name="gameStuff.vigor" value="<%= gameStuff.vigor %>" size="5" /></td>
+        </tr>
+        <tr>
+          <td align="right"><strong>Charisma</strong></td><td><input type="text" class="input-sm base" name="gameStuff.charisma" value="<%= gameStuff.charisma %>" size="10" /></td>
+        </tr>
+        <tr>
+          <td align="right"><strong>Pace</strong></td><td><input type="text" class="input-sm base" name="gameStuff.pace" value="<%= gameStuff.pace %>" size="10" /></td>
+        </tr>
+        <tr>
+          <td align="right"><strong>Parry</strong></td><td><input type="text" class="input-sm base" name="gameStuff.parry" value="<%= gameStuff.parry %>" size="10" /></td>
+        </tr>
+        <tr>
+          <td align="right"><strong>Toughness</strong></td><td><input type="text" class="input-sm base" name="gameStuff.toughness" value="<%= gameStuff.toughness %>" size="10" /></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="well">
+      <h4 class="text-center">Skills</h4>
+      <div id="skills"></div>
+    </div>
+    <div class="well">
+      <h4 class="text-center">Equipment</h4>
+      <div id="equipment"></div>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="well">
+      <h4 class="text-center">Edges</h4>
+      <div id="edges"></div>
+    </div>
+    <div class="well">
+      <h4 class="text-center">Hindrances</h4>
+      <div id="hindrances"></div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="well">
+      <h4 class="text-center">Weapons</h4>
+      <div id="weapons"></div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="well">
+      <h4 class="text-center">Powers</h4>
+      <div id="powers"></div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="well">
+      <h4 class="text-center">Advancement Track</h4>
+      <div id="advancement"></div>
+    </div>
+  </div>
+</div>

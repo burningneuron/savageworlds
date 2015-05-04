@@ -3,10 +3,14 @@ var mongoose = require('mongoose');
 
 // Define our character schema
 var CharacterSchema = new mongoose.Schema({
-	userId: String,
-	system: String,
-	name: String,
-	setting: String
+  userId: String,
+  userName: String,
+  system: String,
+  setting: String,
+  player: String,
+  name: String,
+
+  gameStuff: mongoose.Schema.Types.Mixed
 });
 
 // Export the Mongoose model

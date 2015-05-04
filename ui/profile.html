@@ -43,6 +43,9 @@
         document.getElementById("user.facebook.token").innerHTML = user.facebook.token;
         document.getElementById("user.facebook.email").innerHTML = user.facebook.email;
         document.getElementById("user.facebook.name").innerHTML = user.facebook.name;
+      }
+
+      if (user.facebook && user.facebook.token) {
         el.href = "/unlink/facebook";
         el.innerHTML = "Unlink Facebook"
       } else {
@@ -56,6 +59,9 @@
         document.getElementById("user.twitter.token").innerHTML = user.twitter.token;
         document.getElementById("user.twitter.displayName").innerHTML = user.twitter.displayName;
         document.getElementById("user.twitter.username").innerHTML = user.twitter.username;
+      }
+
+      if (user.twitter && user.twitter.token) {
         el.href = "/unlink/twitter";
         el.innerHTML = "Unlink Twitter"
       } else {
@@ -69,6 +75,9 @@
         document.getElementById("user.google.token").innerHTML = user.google.token;
         document.getElementById("user.google.email").innerHTML = user.google.email;
         document.getElementById("user.google.name").innerHTML = user.google.name;
+      }
+
+      if (user.google && user.google.token) {
         el.href = "/unlink/google";
         el.innerHTML = "Unlink Google"
       } else {

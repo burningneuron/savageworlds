@@ -1,9 +1,10 @@
 // route middleware to ensure user is logged in
 var isLoggedIn = function(req, res, next) {
-  if (req.isAuthenticated())
+  if (process.env.NOAUTH === "true" || req.isAuthenticated()) {
     return next();
+  }
 
-  res.redirect('/');
+  res.status(401).send({error: 'You must be logged in'});
 };
 
 var initialize = function(app, passport) {
@@ -20,18 +21,18 @@ var initialize = function(app, passport) {
   // =============================================================================
 
   // process the login form
-  app.post('/login', passport.authenticate('local-login', {
-    successRedirect: '/profile.html', // redirect to the secure profile section
-    failureRedirect: '/login.html', // redirect back to the signup page if there is an error
-    failureFlash: true // allow flash messages
-  }));
+  // app.post('/login', passport.authenticate('local-login', {
+  //   successRedirect: '/profile.html', // redirect to the secure profile section
+  //   failureRedirect: '/login.html', // redirect back to the signup page if there is an error
+  //   failureFlash: true // allow flash messages
+  // }));
 
   // process the signup form
-  app.post('/signup', passport.authenticate('local-signup', {
-    successRedirect: '/profile.html', // redirect to the secure profile section
-    failureRedirect: '/signup.html', // redirect back to the signup page if there is an error
-    failureFlash: true // allow flash messages
-  }));
+  // app.post('/signup', passport.authenticate('local-signup', {
+  //   successRedirect: '/profile.html', // redirect to the secure profile section
+  //   failureRedirect: '/signup.html', // redirect back to the signup page if there is an error
+  //   failureFlash: true // allow flash messages
+  // }));
 
   // facebook -------------------------------
 
@@ -43,7 +44,7 @@ var initialize = function(app, passport) {
   // handle the callback after facebook has authenticated the user
   app.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
-      successRedirect: '/profile.html',
+      successRedirect: '/',
       failureRedirect: '/'
     }));
 
@@ -57,7 +58,7 @@ var initialize = function(app, passport) {
   // handle the callback after twitter has authenticated the user
   app.get('/auth/twitter/callback',
     passport.authenticate('twitter', {
-      successRedirect: '/profile.html',
+      successRedirect: '/',
       failureRedirect: '/'
     }));
 
@@ -72,7 +73,7 @@ var initialize = function(app, passport) {
   // the callback after google has authenticated the user
   app.get('/auth/google/callback',
     passport.authenticate('google', {
-      successRedirect: '/profile.html',
+      successRedirect: '/',
       failureRedirect: '/'
     }));
 
@@ -81,14 +82,14 @@ var initialize = function(app, passport) {
   // =============================================================================
 
   // locally --------------------------------
-  app.get('/connect/local', function(req, res) {
-    res.redirect('connect-local.html');
-  });
-  app.post('/connect/local', passport.authenticate('local-signup', {
-    successRedirect: '/profile.html', // redirect to the secure profile section
-    failureRedirect: '/signup.html', // redirect back to the signup page if there is an error
-    failureFlash: true // allow flash messages
-  }));
+  // app.get('/connect/local', function(req, res) {
+  //   res.redirect('connect-local.html');
+  // });
+  // app.post('/connect/local', passport.authenticate('local-signup', {
+  //   successRedirect: '/profile.html', // redirect to the secure profile section
+  //   failureRedirect: '/signup.html', // redirect back to the signup page if there is an error
+  //   failureFlash: true // allow flash messages
+  // }));
 
   // facebook -------------------------------
 
@@ -100,7 +101,7 @@ var initialize = function(app, passport) {
   // handle the callback after facebook has authorized the user
   app.get('/connect/facebook/callback',
     passport.authorize('facebook', {
-      successRedirect: '/profile.html',
+      successRedirect: '/',
       failureRedirect: '/'
     }));
 
@@ -114,7 +115,7 @@ var initialize = function(app, passport) {
   // handle the callback after twitter has authorized the user
   app.get('/connect/twitter/callback',
     passport.authorize('twitter', {
-      successRedirect: '/profile.html',
+      successRedirect: '/',
       failureRedirect: '/'
     }));
 
@@ -129,7 +130,7 @@ var initialize = function(app, passport) {
   // the callback after google has authorized the user
   app.get('/connect/google/callback',
     passport.authorize('google', {
-      successRedirect: '/profile.html',
+      successRedirect: '/',
       failureRedirect: '/'
     }));
 
@@ -141,21 +142,27 @@ var initialize = function(app, passport) {
   // user account will stay active in case they want to reconnect in the future
 
   // local -----------------------------------
-  app.get('/unlink/local', isLoggedIn, function(req, res) {
-    var user = req.user;
-    user.local.email = undefined;
-    user.local.password = undefined;
-    user.save(function(err) {
-      res.redirect('/profile.html');
-    });
-  });
+  // app.get('/unlink/local', isLoggedIn, function(req, res) {
+  //   var user = req.user;
+  //   user.local.email = undefined;
+  //   user.local.password = undefined;
+  //   user.save(function(err) {
+  //     res.redirect('/profile.html');
+  //   });
+  // });
 
   // facebook -------------------------------
   app.get('/unlink/facebook', isLoggedIn, function(req, res) {
     var user = req.user;
     user.facebook.token = undefined;
+
     user.save(function(err) {
-      res.redirect('/profile.html');
+			if (err) {
+				console.log("problem unlinking facebook " + err);
+			} else {
+				console.log("facebook unlinked");
+			}
+      res.redirect('/');
     });
   });
 
@@ -164,7 +171,12 @@ var initialize = function(app, passport) {
     var user = req.user;
     user.twitter.token = undefined;
     user.save(function(err) {
-      res.redirect('/profile.html');
+			if (err) {
+				console.log("problem unlinking twitter " + err);
+			} else {
+				console.log("twitter unlinked");
+			}
+      res.redirect('/');
     });
   });
 
@@ -173,7 +185,12 @@ var initialize = function(app, passport) {
     var user = req.user;
     user.google.token = undefined;
     user.save(function(err) {
-      res.redirect('/profile.html');
+			if (err) {
+				console.log("problem unlinking google " + err);
+			} else {
+				console.log("google unlinked");
+			}
+      res.redirect('/');
     });
   });
 
